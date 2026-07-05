@@ -1,0 +1,10 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <title>Ordoviam — app icon</title>
+  <desc>The Convergence mark in gold on an ink tile.</desc>
+  <rect x="0" y="0" width="200" height="200" rx="44" fill="#16211D"/>
+  <g transform="translate(100,100) scale(1.05)" fill="#B48A3C">
+    <path d="M-6 -60 L-56 60 L-16 60 Z"/>
+    <path d="M6 -60 L56 60 L16 60 Z"/>
+    <circle cx="0" cy="-14" r="6.5"/>
+  </g>
+</svg>
