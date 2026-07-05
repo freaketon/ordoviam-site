@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ordoviam — Capital Wayfinding for the Lower-Middle Market</title>
   <meta name="description" content="Ordoviam is capital wayfinding for the lower-middle market: a structured, documented lender search for $5M–$50M raises — stations, sequence, and a record the CFO can defend." />
+  <!-- INTERNAL PREVIEW: remove the noindex line at launch, after legal review clears external use -->
+  <meta name="robots" content="noindex" />
   <link rel="canonical" href="https://ordoviam.ai/" />
-  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
   <link rel="icon" href="assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="site.css?v=7" />
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Ordoviam" />
   <meta property="og:title" content="Ordoviam — Capital Wayfinding for the Lower-Middle Market" />
@@ -18,11 +19,8 @@
   <meta property="og:url" content="https://ordoviam.ai/" />
   <meta property="og:image" content="https://ordoviam.ai/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ordoviam — Capital Wayfinding for the Lower-Middle Market" />
-  <meta name="twitter:description" content="A structured, documented lender search for $5M–$50M raises. Protected passage, not guaranteed arrival." />
   <meta name="twitter:image" content="https://ordoviam.ai/assets/og-image.png" />
 
-  <!-- Structured data: Organization + WebSite + FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,36 +44,18 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is capital wayfinding?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Capital wayfinding is a structured, documented approach to the mid-market debt search. Instead of months of cold outreach across a fragmented lender landscape, the search becomes a sequence of recorded stations — intake, package, match, outreach, terms — so a CFO always knows who was approached, on what basis, and with what response." }
-          },
-          {
-            "@type": "Question",
-            "name": "Who is Ordoviam for?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Companies in the lower-middle market — roughly $10M–$150M in revenue raising $5M–$50M in debt — and the CFOs, sponsors, and finance teams running those raises. On the supply side, lender desks that want pre-qualified, on-mandate deal flow with complete packages." }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Ordoviam recommend lenders or guarantee financing?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. Ordoviam structures and documents the search process. Mandate fit is established from the borrower's deal profile before any desk sees a name, and fit is never for sale. Ordoviam does not recommend lenders, rank them for payment, or guarantee any financing outcome — the promise is protected passage, not guaranteed arrival." }
-          },
-          {
-            "@type": "Question",
-            "name": "What does 'mandate-fit-first' mean?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Every lender desk has a mandate: size range, sector, geography, structure. Mandate-fit-first means the fit questions are answered before outreach happens, so desks only see deals that are in their box and borrowers don't burn weeks on dead-end conversations." }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the record a CFO can defend?",
-            "acceptedAnswer": { "@type": "Answer", "text": "A documented trail of the entire search: which desks were approached, on what basis, what was sent, and what came back. It is the artifact a CFO can put in front of a board or sponsor to show the process was disciplined and complete." }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is Ordoviam called 'the wayfinder'?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The name comes from ordo (an order with a duty) and via (the way, the road) — a structured body whose job is to make a difficult journey passable. Ordoviam marks the route through a fragmented capital landscape; it doesn't promise the destination." }
-          }
+          { "@type": "Question", "name": "What is capital wayfinding?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Capital wayfinding is a structured, documented approach to the mid-market debt search. Instead of months of cold outreach across a fragmented lender landscape, the search becomes a sequence of recorded stations — intake, package, match, outreach, terms — so a CFO always knows who was approached, on what basis, and with what response." } },
+          { "@type": "Question", "name": "Who is Ordoviam for?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Companies in the lower-middle market — roughly $10M–$150M in revenue raising $5M–$50M in debt — and the CFOs, sponsors, and finance teams running those raises. On the supply side, lender desks that want pre-qualified, on-mandate deal flow with complete packages." } },
+          { "@type": "Question", "name": "Does Ordoviam recommend lenders or guarantee financing?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Ordoviam structures and documents the search process. Mandate fit is established from the borrower's deal profile before any desk sees a name, and fit is never for sale. Ordoviam does not recommend lenders, rank them for payment, or guarantee any financing outcome — the promise is protected passage, not guaranteed arrival." } },
+          { "@type": "Question", "name": "What does 'mandate-fit-first' mean?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Every lender desk has a mandate: size range, sector, geography, structure. Mandate-fit-first means the fit questions are answered before outreach happens, so desks only see deals that are in their box and borrowers don't burn weeks on dead-end conversations." } },
+          { "@type": "Question", "name": "What is the record a CFO can defend?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A documented trail of the entire search: which desks were approached, on what basis, what was sent, and what came back. It is the artifact a CFO can put in front of a board or sponsor to show the process was disciplined and complete." } },
+          { "@type": "Question", "name": "Why is Ordoviam called 'the wayfinder'?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The name comes from ordo (an order with a duty) and via (the way, the road) — a structured body whose job is to make a difficult journey passable. Ordoviam marks the route through a fragmented capital landscape; it doesn't promise the destination." } }
         ]
       }
     ]
@@ -84,123 +64,119 @@
 </head>
 <body>
 
-<!-- ============================ NAV ============================ -->
-<nav class="nav" aria-label="Main">
+<div class="grain-veil" aria-hidden="true"></div>
+
+<nav class="nav" id="nav" aria-label="Main">
   <div class="nav-inner">
-    <a class="nav-brand" href="#top" aria-label="Ordoviam home">
+    <a class="nav-brand" href="#arrival" aria-label="Ordoviam home">
       <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)" fill="#B48A3C"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/><circle cx="0" cy="-14" r="6.5"/></g></svg>
       <span>ordoviam</span>
     </a>
     <a class="link" href="#road">The road</a>
-    <a class="link" href="#stations">How it works</a>
-    <a class="link" href="#why">Why Ordoviam</a>
+    <a class="link" href="#stations">The stations</a>
+    <a class="link" href="#pass">The pass</a>
     <a class="link" href="#lenders">For lenders</a>
     <a class="link" href="#faq">FAQ</a>
-    <a class="btn btn-gold" href="#access">Request access</a>
+    <a class="btn btn-gold" href="#convergence">Request access</a>
   </div>
 </nav>
 
-<!-- ============================ HERO ============================ -->
-<header class="hero grain vignette" id="top">
-  <div class="wrap">
-    <!-- the way reveals itself: two sides converge, light blooms at φ -->
-    <svg class="hero-mark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" aria-label="The Ordoviam Convergence mark revealing">
+<!-- ══════════════ SCENE 0 · ARRIVAL ══════════════ -->
+<header class="scene" id="arrival">
+  <div class="bg-media" data-parallax="0.18">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"
+           poster="assets/video/hero-poster.jpg">
+      <source src="assets/video/hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="veil veil-hero"></div>
+
+  <div class="copy wrap">
+    <svg class="hero-mark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" aria-label="The Ordoviam Convergence mark">
       <g transform="translate(80,90)">
-        <g id="hL"><path d="M-6 -60 L-56 60 L-16 60 Z" fill="none" stroke="#B48A3C" stroke-width="1.6"/></g>
-        <g id="hR"><path d="M6 -60 L56 60 L16 60 Z" fill="none" stroke="#B48A3C" stroke-width="1.6"/></g>
-        <g id="hSolid" opacity="0" fill="#B48A3C">
-          <path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/>
-        </g>
-        <line id="hBeam" x1="0" y1="-57" x2="0" y2="-14" stroke="#B48A3C" stroke-width="1.1" opacity="0"/>
-        <circle id="hHalo" cx="0" cy="-14" r="40" fill="#B48A3C" opacity="0"/>
-        <circle id="hCore" cx="0" cy="-14" r="6.5" fill="#B48A3C" opacity="0"/>
+        <g id="hL"><path d="M-6 -60 L-56 60 L-16 60 Z" fill="#B48A3C"/></g>
+        <g id="hR"><path d="M6 -60 L56 60 L16 60 Z" fill="#B48A3C"/></g>
+        <circle id="hCore" cx="0" cy="-14" r="6.5" fill="#B48A3C"/>
       </g>
     </svg>
-
-    <h1 class="serif">We don’t show you the destination.<br /><em>We mark the way.</em></h1>
-    <p class="sub">Ordoviam is capital wayfinding for the lower-middle market: a structured, documented
-      lender search for $5M–$50M raises — stations, sequence, and a record the CFO can defend.</p>
-    <div class="ctas">
-      <a class="btn btn-gold" href="#access">Request access</a>
-      <a class="btn btn-line" href="#stations">See how the search works</a>
+    <h1 data-hero="1">We don’t show you the destination.<br /><em>We mark the way.</em></h1>
+    <p class="sub" data-hero="2">Ordoviam is capital wayfinding for the lower-middle market: a structured,
+      documented lender search for $5M–$50M raises — stations, sequence, and a record the CFO can defend.</p>
+    <div class="ctas" data-hero="3">
+      <a class="btn btn-gold" href="#convergence">Request access</a>
+      <a class="btn btn-ghost" href="#road">Walk the road</a>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true">The way begins below</div>
+  <div class="cue">Scroll</div>
 </header>
 
 <main>
 
-<!-- ============================ THE ROAD ============================ -->
-<section id="road">
-  <div class="wrap">
-    <span class="label rv">01 · The road today</span>
-    <h2 class="serif rv" style="font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 24ch;">Mid-market debt is a vast landscape with no map.</h2>
-    <span class="gold-tick rv"></span>
-    <p class="rv">The lenders a company needs exist — thousands of them. But the path between a CFO and
-      the right desk is unmarked: no real-time picture of lender appetite, a different package for every
-      desk, and rejections that arrive without reasons. Raising debt happens once every few years;
-      the landscape shifts every quarter.</p>
-    <div class="stats">
-      <div class="stat rv"><b>4,000<span>+</span></b><small>commercial lenders in the US landscape — fragmented across banks, private credit, and community desks</small></div>
-      <div class="stat rv"><b>25–35</b><small>lenders a typical borrower contacts across a single raise</small></div>
-      <div class="stat rv"><b>6 <span>months</span></b><small>of search time a raise routinely burns — while the company still has to run</small></div>
-      <div class="stat rv"><b>0</b><small>explanations, usually, when a deal is declined — the search learns nothing</small></div>
+<!-- ══════════════ SCENE 1 · THE ROAD (pinned lines) ══════════════ -->
+<section class="scene" id="road" aria-label="The road today">
+  <div class="pinbox" id="roadPin">
+    <div class="bg-media" data-parallax="0.1">
+      <video muted loop playsinline preload="none" poster="assets/video/route-poster.jpg" data-lazy-video>
+        <source data-src="assets/video/route.mp4" type="video/mp4" />
+      </video>
     </div>
-    <p class="rv" style="margin-top: 1.6rem;"><small style="color: var(--waystone);">Figures from Ordoviam market research of the US lower-middle market ($10M–$150M revenue borrowers, $5M–$50M raises).</small></p>
+    <div class="veil veil-dim"></div>
+    <span class="label kicker">01 · The road today</span>
+    <p class="road-line"><b>4,000+</b> lenders.<small>Banks, private credit, community desks — a fragmented landscape with no map.</small></p>
+    <p class="road-line"><b>25–35</b> approached.<small>What a typical borrower burns through in a single raise.</small></p>
+    <p class="road-line"><b>Six months</b> in the dark.<small>While the company still has to run.</small></p>
+    <p class="road-line">Declined — <b>no reason given.</b><small>The search learns nothing. Next time starts from zero.</small></p>
+    <p class="road-line">Mid-market debt is a vast landscape<br /><b>with no map.</b><small>Ordoviam exists to mark the way through it.</small></p>
   </div>
 </section>
 
-<!-- ============================ STATIONS ============================ -->
-<section class="stations" id="stations">
-  <div class="wrap">
-    <span class="label">02 · How it works</span>
-    <h2 class="serif" style="font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--clear); max-width: 26ch;">The way reveals itself — one station at a time.</h2>
-    <span class="gold-tick"></span>
-    <p style="color: var(--mist);">Your search becomes a sequence of documented stations. Each one records
-      who was approached, on what basis, and with what response. Scroll the route.</p>
-
-    <div class="stations-grid" style="margin-top: 2.5rem;">
-      <div class="route-sticky">
-        <svg class="route-svg" viewBox="0 0 340 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path id="routePath" d="M50 30 C 170 55 240 80 240 120 C 240 165 90 175 90 215 C 90 255 250 265 250 305 C 250 345 150 370 150 395"
-                fill="none" stroke="#345A70" stroke-width="1.6" stroke-dasharray="820" stroke-dashoffset="820"/>
-          <g id="routeStops" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#8E9B90"></g>
+<!-- ══════════════ SCENE 2 · THE STATIONS (pinned journey) ══════════════ -->
+<section class="scene" id="stations" aria-label="How it works">
+  <div class="pinbox" id="stationsPin">
+    <div class="st-head wrap"><span class="label">02 · How it works — the way reveals itself</span></div>
+    <div class="st-progress">STATION <b id="stNum">01</b> / 05</div>
+    <div class="st-grid">
+      <div class="st-route">
+        <svg viewBox="0 0 340 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path id="routePath" d="M60 30 C 200 60 260 90 260 135 C 260 185 90 195 90 240 C 90 285 265 295 265 340 C 265 385 160 405 160 435"
+                fill="none" stroke="#345A70" stroke-width="1.7"/>
+          <g id="routeStops"></g>
         </svg>
       </div>
-      <div class="station-list">
-        <div class="station-card" data-station="0">
+      <div class="st-panels">
+        <div class="st-panel">
           <span class="num">STATION 01</span>
           <h3>Intake</h3>
           <p>A conversation about the business and the need — not a lending quiz. The company, the capital
             purpose, the constraints that matter.</p>
           <span class="rec">recorded: deal profile · capital purpose · constraints</span>
         </div>
-        <div class="station-card" data-station="1">
+        <div class="st-panel">
           <span class="num">STATION 02</span>
           <h3>Package</h3>
-          <p>One complete, desk-ready package — built once, formatted for how each desk type actually reads,
-            instead of rebuilt for every lender.</p>
+          <p>One complete, desk-ready package — built once, formatted for how each desk type actually
+            reads, instead of rebuilt for every lender.</p>
           <span class="rec">recorded: package version · sources · completeness</span>
         </div>
-        <div class="station-card" data-station="2">
+        <div class="st-panel">
           <span class="num">STATION 03</span>
           <h3>Match</h3>
-          <p>Mandate fit established from the deal profile — size, sector, geography, structure — before any
-            desk sees a name. Fit is never for sale.</p>
+          <p>Mandate fit established from the deal profile — size, sector, geography, structure — before
+            any desk sees a name. Fit is never for sale.</p>
           <span class="rec">recorded: mandate criteria · fit basis · no pay-for-rank</span>
         </div>
-        <div class="station-card" data-station="3">
+        <div class="st-panel">
           <span class="num">STATION 04</span>
           <h3>Outreach</h3>
           <p>Only in-box desks are approached, each with what that desk needs — and every approach and
             response lands in the record.</p>
           <span class="rec">recorded: who · when · on what basis · response</span>
         </div>
-        <div class="station-card" data-station="4">
+        <div class="st-panel">
           <span class="num">STATION 05</span>
           <h3>Terms</h3>
-          <p>Responses organized side by side, and a complete trail of the search behind them — the record
-            you can put in front of a board.</p>
+          <p>Responses organized side by side, with a complete trail of the search behind them — the
+            record you can put in front of a board.</p>
           <span class="rec">recorded: the defensible record of the whole search</span>
         </div>
       </div>
@@ -208,141 +184,122 @@
   </div>
 </section>
 
-<!-- ============================ WHY ============================ -->
-<section id="why">
-  <div class="wrap">
-    <span class="label rv">03 · Why Ordoviam</span>
-    <h2 class="serif rv" style="font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 24ch;">Built like infrastructure. Held like a record.</h2>
-    <span class="gold-tick rv"></span>
-    <div class="pillars">
-      <div class="pillar gold rv">
-        <h3>Mandate-fit-first</h3>
-        <p>We start with fit, not lender lists. Desks only see deals in their box; borrowers only spend
-          time where the box fits. Nothing is sent that isn’t in the box.</p>
-      </div>
-      <div class="pillar rv">
-        <h3>A record you can defend</h3>
-        <p>Every station writes to the record — who, when, on what basis, with what response. Process
-          discipline a CFO can show a board, a sponsor, an auditor.</p>
-      </div>
-      <div class="pillar rv">
-        <h3>No pay-for-rank</h3>
-        <p>Fit is determined by the borrower’s deal profile — never by lender payment, fee tier, or
-          engagement status. The match is incorruptible, structurally.</p>
-      </div>
+<!-- ══════════════ SCENE 3 · THE PASS (scroll-scrubbed film) ══════════════ -->
+<section class="scene" id="pass" aria-label="What we hold to">
+  <div class="pinbox" id="passPin">
+    <div class="bg-media">
+      <video id="passVideo" muted playsinline preload="auto" poster="assets/video/pass-poster.jpg">
+        <source src="assets/video/pass-scrub.mp4" type="video/mp4" />
+      </video>
     </div>
+    <div class="veil veil-pass"></div>
+    <p class="pass-line">Mandate-fit first.<small>Desks only see deals in their box. Nothing is sent that isn’t.</small></p>
+    <p class="pass-line">A record you can defend.<small>Who was approached, on what basis, with what response — written down.</small></p>
+    <p class="pass-line">Fit is never for sale.<small>No pay-for-rank. The match is incorruptible, structurally.</small></p>
   </div>
 </section>
 
-<!-- ============================ FILM BAND ============================ -->
-<section class="film-band" aria-label="Brand film frame">
-  <img src="assets/imagery/film-the-way.jpg" alt="A faint path through a vast fog-filled landscape; one shaft of gold light makes the way readable" loading="lazy" />
-  <div class="quote"><p>“Some roads are too dangerous to travel alone. So an Order formed with one job:
-    hold the way open.”</p></div>
-</section>
-
-<!-- ============================ LENDERS ============================ -->
-<section class="lenders" id="lenders">
-  <div class="wrap">
-    <span class="label">04 · For lender desks</span>
-    <h2 class="serif" style="font-size: clamp(1.8rem, 3.6vw, 2.6rem); color: var(--clear); max-width: 26ch;">On-mandate deal flow. Complete packages. Nothing else.</h2>
-    <span class="gold-tick"></span>
-    <p style="color: var(--mist); max-width: 58ch;">A desk that sees hundreds of summaries a week engages with
-      the few that are in the box. Ordoviam sends only those — sized, sectored, and structured to your
-      mandate, with the package complete on arrival.</p>
-    <div class="pillars">
-      <div class="pillar rv">
-        <h3>Pre-qualified inbound</h3>
-        <p>Fit demonstrated before the deal reaches you. The first paragraph answers size, sector,
-          geography, structure.</p>
-      </div>
-      <div class="pillar rv">
-        <h3>Desk-shaped delivery</h3>
-        <p>Relationship managers, private-credit desks, and community banks read differently — each
-          receives the artifact that fits how they work.</p>
-      </div>
-      <div class="pillar rv">
-        <h3>Standing, earned</h3>
-        <p>Consistent on-mandate flow with clean documentation — the way standing has always been earned,
-          made systematic.</p>
+<!-- ══════════════ RELIEF · parchment ══════════════ -->
+<div class="relief">
+  <section id="lenders" aria-label="For lender desks">
+    <div class="wrap">
+      <span class="label">03 · For lender desks</span>
+      <h2 class="serif">On-mandate deal flow. Complete packages. Nothing else.</h2>
+      <span class="gold-tick"></span>
+      <p style="color: var(--waystone); max-width: 58ch;">A desk that sees hundreds of summaries a week engages
+        with the few that are in the box. Ordoviam sends only those — sized, sectored, and structured to
+        your mandate, with the package complete on arrival.</p>
+      <div class="cards">
+        <div class="card gold" data-rise>
+          <h3>Pre-qualified inbound</h3>
+          <p>Fit demonstrated before the deal reaches you. The first paragraph answers size, sector, geography, structure.</p>
+        </div>
+        <div class="card" data-rise>
+          <h3>Desk-shaped delivery</h3>
+          <p>Relationship managers, private-credit desks, and community banks read differently — each receives the artifact that fits how they work.</p>
+        </div>
+        <div class="card" data-rise>
+          <h3>Standing, earned</h3>
+          <p>Consistent on-mandate flow with clean documentation — the way standing has always been earned, made systematic.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================ FAQ ============================ -->
-<section id="faq">
-  <div class="wrap">
-    <span class="label rv">05 · Questions</span>
-    <h2 class="serif rv" style="font-size: clamp(1.8rem, 3.6vw, 2.6rem);">Plain answers.</h2>
-    <span class="gold-tick rv"></span>
-    <div style="max-width: 46rem;">
-      <details class="rv"><summary>What is capital wayfinding?</summary>
+  <section id="faq" aria-label="Questions" style="padding-top: 0;">
+    <div class="wrap">
+      <span class="label">04 · Questions</span>
+      <h2 class="serif">Plain answers.</h2>
+      <span class="gold-tick"></span>
+      <details><summary>What is capital wayfinding?</summary>
         <p>A structured, documented approach to the mid-market debt search. Instead of months of cold
         outreach across a fragmented lender landscape, the search becomes a sequence of recorded stations —
         intake, package, match, outreach, terms — so you always know who was approached, on what basis,
         and with what response.</p></details>
-      <details class="rv"><summary>Who is Ordoviam for?</summary>
+      <details><summary>Who is Ordoviam for?</summary>
         <p>Companies in the lower-middle market — roughly $10M–$150M in revenue raising $5M–$50M in debt —
         and the CFOs, sponsors, and finance teams running those raises. On the supply side: lender desks
         that want pre-qualified, on-mandate deal flow.</p></details>
-      <details class="rv"><summary>Do you recommend lenders or guarantee financing?</summary>
-        <p>No. Ordoviam structures and documents the search. Mandate fit is established from the
-        borrower’s deal profile before any desk sees a name, and fit is never for sale. We don’t recommend
-        lenders, rank them for payment, or guarantee outcomes — protected passage, not guaranteed arrival.</p></details>
-      <details class="rv"><summary>What does “mandate-fit-first” mean?</summary>
+      <details><summary>Do you recommend lenders or guarantee financing?</summary>
+        <p>No. Ordoviam structures and documents the search. Mandate fit is established from the borrower’s
+        deal profile before any desk sees a name, and fit is never for sale. We don’t recommend lenders,
+        rank them for payment, or guarantee outcomes — protected passage, not guaranteed arrival.</p></details>
+      <details><summary>What does “mandate-fit-first” mean?</summary>
         <p>Every desk has a mandate: size range, sector, geography, structure. Mandate-fit-first means those
         questions are answered before outreach happens — desks only see deals in their box, and borrowers
         don’t burn weeks on dead-end conversations.</p></details>
-      <details class="rv"><summary>What is “the record you can defend”?</summary>
+      <details><summary>What is “the record you can defend”?</summary>
         <p>A documented trail of the entire search: which desks were approached, what was sent, on what
-        basis, and what came back. It’s the artifact a CFO can put in front of a board or sponsor to show
-        the process was disciplined and complete.</p></details>
-      <details class="rv"><summary>Why “the wayfinder”?</summary>
+        basis, and what came back — the artifact a CFO can put in front of a board or sponsor.</p></details>
+      <details><summary>Why “the wayfinder”?</summary>
         <p>From <em>ordo</em> (an order with a duty) and <em>via</em> (the way): a structured body whose job
-        is to make a difficult journey passable. We mark the route through a fragmented capital landscape.
-        We don’t promise the destination.</p></details>
+        is to make a difficult journey passable. We mark the route. We don’t promise the destination.</p></details>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- ============================ ACCESS ============================ -->
-<section id="access" style="background: var(--ink); color: var(--clear); text-align: center;">
-  <div class="wrap grain vignette" style="position: relative; padding: 3rem 1.5rem;">
-    <svg style="width: 64px; height: 72px; position: relative; z-index: 2;" viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)" fill="#B48A3C"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/><circle cx="0" cy="-14" r="6.5"/></g></svg>
-    <h2 class="serif" style="color: var(--clear); font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin-top: 1.2rem; position: relative; z-index: 2;">Begin the intake.</h2>
-    <p style="color: var(--mist); margin: 1rem auto 2rem; max-width: 46ch; position: relative; z-index: 2;">Tell us about the company and the capital need.
-      We’ll show you what a documented search looks like.</p>
-    <a class="btn btn-gold" style="position: relative; z-index: 2;" href="mailto:access@ordoviam.ai?subject=Request%20access%20—%20Ordoviam">Request access</a>
+<!-- ══════════════ SCENE 4 · THE CONVERGENCE (finale) ══════════════ -->
+<section class="scene" id="convergence" aria-label="Request access">
+  <div class="pinbox" id="cvPin">
+    <svg class="cv-mark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" aria-label="The Convergence assembles">
+      <g transform="translate(80,90)">
+        <g id="cvL"><path d="M-6 -60 L-56 60 L-16 60 Z" fill="#B48A3C"/></g>
+        <g id="cvR"><path d="M6 -60 L56 60 L16 60 Z" fill="#B48A3C"/></g>
+        <circle id="cvHalo" cx="0" cy="-14" r="34" fill="#B48A3C" opacity="0"/>
+        <circle id="cvCore" cx="0" cy="-14" r="6.5" fill="#B48A3C" opacity="0"/>
+      </g>
+    </svg>
+    <div class="cv-copy" id="cvCopy">
+      <h2 class="serif">Begin the intake.</h2>
+      <p>Tell us about the company and the capital need. We’ll show you what a documented search looks like.</p>
+      <a class="btn btn-gold" href="mailto:access@ordoviam.ai?subject=Request%20access%20—%20Ordoviam">Request access</a>
+    </div>
   </div>
 </section>
 
 </main>
 
-<!-- ============================ FOOTER ============================ -->
 <footer>
   <div class="wrap">
     <div class="cols">
       <div>
         <span class="sig">ordoviam</span>
-        <p style="margin-top: 1rem; max-width: 48ch;">Ordoviam is capital wayfinding for the lower-middle
+        <p style="margin-top: 1.1rem; max-width: 46ch;">Ordoviam is capital wayfinding for the lower-middle
           market: a structured, documented lender search for $5M–$50M raises — stations, sequence, and a
           record the CFO can defend.</p>
       </div>
       <div>
         <span class="label" style="color: var(--waystone);">Site</span>
         <p style="margin-top: 0.8rem; line-height: 2;">
-          <a href="#road">The road</a><br />
-          <a href="#stations">How it works</a><br />
-          <a href="#lenders">For lenders</a><br />
-          <a href="#faq">FAQ</a>
+          <a href="#road">The road</a><br /><a href="#stations">The stations</a><br />
+          <a href="#lenders">For lenders</a><br /><a href="#faq">FAQ</a>
         </p>
       </div>
       <div>
         <span class="label" style="color: var(--waystone);">Contact</span>
         <p style="margin-top: 0.8rem; line-height: 2;">
           <a href="mailto:access@ordoviam.ai">access@ordoviam.ai</a><br />
-          <a href="/llms.txt">llms.txt</a>
+          <a href="llms.txt">llms.txt</a>
         </p>
       </div>
     </div>
@@ -352,6 +309,9 @@
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="main.js?v=7" defer></script>
 </body>
 </html>

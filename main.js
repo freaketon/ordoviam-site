@@ -1,118 +1,196 @@
-/* Ordoviam — motion. One gesture everywhere: the way reveals itself.
-   Calm, ease-out, 400–600ms steps. Respects prefers-reduced-motion. */
+/* Ordoviam — the scroll film. One gesture: the way reveals itself.
+   Lenis smooth scroll + GSAP ScrollTrigger. Calm, ease-out, never bouncy. */
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (s, c) => (c || document).querySelector(s);
 const $$ = (s, c) => [...(c || document).querySelectorAll(s)];
-const outC = x => 1 - Math.pow(1 - x, 3);
-const seg = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
 
-/* ---------- hero: two sides converge, light blooms at φ ---------- */
-(function heroReveal() {
-  const L = $('#hL'), R = $('#hR'), solid = $('#hSolid'),
-        beam = $('#hBeam'), halo = $('#hHalo'), core = $('#hCore');
-  if (!L) return;
-  const paths = [$('path', L), $('path', R)];
-  const LEN = 320, APART = 46;
-  paths.forEach(p => { p.style.strokeDasharray = LEN; p.style.strokeDashoffset = LEN; });
+/* ---------- nav: solid after leaving the hero ---------- */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > innerHeight * 0.7), { passive: true });
 
-  if (reduced) {
-    solid.setAttribute('opacity', 1); core.setAttribute('opacity', 1);
-    paths.forEach(p => p.setAttribute('opacity', 0));
-    return;
-  }
+if (!reduced && window.gsap) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({ ease: 'power3.out' });
 
-  const DUR = 5.6;
-  let start;
-  function frame(now) {
-    if (start === undefined) start = now;
-    const t = (now - start) / 1000;
+  /* ---------- Lenis smooth scroll, driving ScrollTrigger ---------- */
+  const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.95 });
+  window.__lenis = lenis;
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
 
-    const draw = outC(seg(t, 0.2, 1.5));
-    paths.forEach(p => { p.style.strokeDashoffset = LEN * (1 - draw); });
-    const conv = outC(seg(t, 1.5, 2.5));
-    L.setAttribute('transform', `translate(${-APART * (1 - conv)},0)`);
-    R.setAttribute('transform', `translate(${APART * (1 - conv)},0)`);
+  /* QA hook: ?qa=SCROLLPX jumps there after layout settles (harmless in prod) */
+  const qaY = new URLSearchParams(location.search).get('qa');
+  if (qaY) setTimeout(() => {
+    ScrollTrigger.refresh(true); lenis.scrollTo(+qaY, { immediate: true }); ScrollTrigger.update();
+    setTimeout(() => {
+      const r = document.getElementById('roadPin').getBoundingClientRect();
+      document.title = `QA y=${scrollY}`;
+    }, 600);
+  }, 900);
 
-    const b = seg(t, 2.3, 3.0);
-    beam.setAttribute('opacity', b === 0 ? 0 : 0.75 * (1 - seg(t, 3.0, 3.5)));
-    beam.setAttribute('y2', -57 + 43 * outC(b));
+  /* anchors travel the way too — through Lenis, not past it */
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: 0, duration: 1.6 }); }
+  }));
 
-    const bloom = outC(seg(t, 2.8, 3.6));
-    core.setAttribute('opacity', bloom);
-    core.setAttribute('r', 6.5 * (0.25 + 0.75 * bloom));
-    halo.setAttribute('opacity', bloom * (0.32 - 0.2 * seg(t, 3.6, 4.6)));
-
-    const res = outC(seg(t, 3.4, 4.3));
-    solid.setAttribute('opacity', res);
-    const fade = (1 - res);
-    L.setAttribute('opacity', fade); R.setAttribute('opacity', fade);
-
-    if (t < DUR) requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
-
-/* ---------- stations: route draws with scroll; waypoints light one at a time ---------- */
-(function stationsRoute() {
-  const path = $('#routePath'), stopsG = $('#routeStops');
-  if (!path) return;
-  const cards = $$('.station-card');
-  const total = path.getTotalLength();
-  path.style.strokeDasharray = total;
-  path.style.strokeDashoffset = total;
-
-  // place waypoints along the path at even fractions
-  const NS = 'http://www.w3.org/2000/svg';
-  const stops = cards.map((card, i) => {
-    const pt = path.getPointAtLength((i / (cards.length - 1)) * total);
-    const ring = document.createElementNS(NS, 'circle');
-    ring.setAttribute('cx', pt.x); ring.setAttribute('cy', pt.y); ring.setAttribute('r', 7);
-    ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', '#D8D2C3');
-    ring.setAttribute('stroke-width', '1.5'); ring.setAttribute('opacity', '0.5');
-    stopsG.appendChild(ring);
-    const label = document.createElementNS(NS, 'text');
-    label.setAttribute('x', pt.x + 14); label.setAttribute('y', pt.y + 4);
-    label.textContent = ['intake', 'package', 'match', 'outreach', 'terms'][i] || '';
-    stopsG.appendChild(label);
-    return ring;
-  });
-
-  let lit = -1;
-  function light(i) {
-    if (i === lit) return;
-    lit = i;
-    // route draws to the current station
-    const frac = i < 0 ? 0 : i / (cards.length - 1);
-    path.style.transition = reduced ? 'none' : 'stroke-dashoffset 900ms cubic-bezier(.22,.61,.21,1)';
-    path.style.strokeDashoffset = total * (1 - frac);
-    stops.forEach((ring, j) => {
-      const on = j <= i;
-      ring.setAttribute('fill', on ? '#B48A3C' : 'none');
-      ring.setAttribute('stroke', on ? '#B48A3C' : '#D8D2C3');
-      ring.setAttribute('opacity', on ? '1' : '0.5');
-    });
-    cards.forEach((c, j) => c.classList.toggle('lit', j <= i));
-  }
-
-  if (reduced) { light(cards.length - 1); return; }
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const i = +e.target.dataset.station;
-        if (i > lit) light(i);
+  /* ---------- lazy-load section videos when near ---------- */
+  $$('[data-lazy-video]').forEach(v => {
+    ScrollTrigger.create({
+      trigger: v.closest('.scene'), start: 'top 140%',
+      once: true,
+      onEnter: () => {
+        const src = v.querySelector('source');
+        src.src = src.dataset.src; v.load(); v.play().catch(() => {});
       }
     });
-  }, { rootMargin: '-35% 0px -45% 0px' });
-  cards.forEach(c => io.observe(c));
-})();
+  });
 
-/* ---------- quiet reveals ---------- */
-(function reveals() {
-  if (reduced) { $$('.rv').forEach(el => el.classList.add('in')); return; }
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.18 });
-  $$('.rv').forEach(el => io.observe(el));
-})();
+  /* ---------- parallax for background media ---------- */
+  $$('.bg-media[data-parallax]').forEach(el => {
+    const depth = parseFloat(el.dataset.parallax);
+    gsap.fromTo(el, { yPercent: -depth * 50 }, {
+      yPercent: depth * 50, ease: 'none',
+      scrollTrigger: { trigger: el.closest('.scene'), start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  });
+
+  /* ══════════ SCENE 0 · arrival ══════════ */
+  /* entrance: two sides converge, light blooms, copy rises */
+  const arrive = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  arrive
+    .from('#hL', { x: -46, opacity: 0, duration: 1.2, delay: 0.25 })
+    .from('#hR', { x: 46, opacity: 0, duration: 1.2 }, '<')
+    .from('#hCore', { scale: 0, transformOrigin: '50% 50%', opacity: 0, duration: 0.7 }, '-=0.45')
+    .from('[data-hero]', { y: 26, opacity: 0, duration: 0.9, stagger: 0.16 }, '-=0.3');
+  /* departure: the world recedes as you scroll away */
+  gsap.to('#arrival .copy', {
+    yPercent: -18, opacity: 0, ease: 'none',
+    scrollTrigger: { trigger: '#arrival', start: 'top top', end: 'bottom 35%', scrub: true }
+  });
+  gsap.to('#heroVideo', {
+    scale: 1.12, filter: 'brightness(0.55)', ease: 'none',
+    scrollTrigger: { trigger: '#arrival', start: 'top top', end: 'bottom top', scrub: true }
+  });
+
+  /* ══════════ SCENE 1 · the road — lines rise and fall in one pinned breath ══════════ */
+  const roadLines = $$('.road-line');
+  const roadTL = gsap.timeline({
+    scrollTrigger: { trigger: '#roadPin', start: 'top top', end: `+=${roadLines.length * 90}%`, pin: true, scrub: 0.6 }
+  });
+  roadLines.forEach((line, i) => {
+    roadTL.fromTo(line, { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 1 })
+          .to(line, { opacity: 1, duration: 0.6 })
+          .to(line, i < roadLines.length - 1 ? { opacity: 0, y: -44, duration: 1 } : { opacity: 1, duration: 0.4 });
+  });
+
+  /* ══════════ SCENE 2 · the stations — the route draws as panels pass ══════════ */
+  const path = $('#routePath');
+  const stops = [];
+  {
+    const total = path.getTotalLength();
+    path.style.strokeDasharray = total;
+    path.style.strokeDashoffset = total;
+    const NS = 'http://www.w3.org/2000/svg';
+    const names = ['intake', 'package', 'match', 'outreach', 'terms'];
+    for (let i = 0; i < 5; i++) {
+      const pt = path.getPointAtLength((i / 4) * total);
+      const ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('cx', pt.x); ring.setAttribute('cy', pt.y); ring.setAttribute('r', 7.5);
+      ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', '#D8D2C3');
+      ring.setAttribute('stroke-width', '1.5'); ring.setAttribute('opacity', '0.4');
+      const label = document.createElementNS(NS, 'text');
+      label.setAttribute('x', pt.x + 16); label.setAttribute('y', pt.y + 4);
+      label.setAttribute('font-family', 'ui-monospace, Menlo, monospace');
+      label.setAttribute('font-size', '11.5'); label.setAttribute('fill', '#8E9B90');
+      label.textContent = names[i];
+      $('#routeStops').appendChild(ring); $('#routeStops').appendChild(label);
+      stops.push(ring);
+    }
+    const panels = $$('.st-panel');
+    const stTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#stationsPin', start: 'top top', end: '+=420%', pin: true, scrub: 0.6,
+        onUpdate: self => {
+          const idx = Math.min(4, Math.floor(self.progress * 5));
+          $('#stNum').textContent = String(idx + 1).padStart(2, '0');
+        }
+      }
+    });
+    /* station 1 greets you before the pin engages */
+    gsap.set(panels[0], { opacity: 1 });
+    gsap.set(stops[0], { attr: { fill: '#B48A3C', stroke: '#B48A3C' }, opacity: 1 });
+    panels.forEach((panel, i) => {
+      const frac = i / 4;
+      stTL.to(path, { strokeDashoffset: total * (1 - frac), duration: i === 0 ? 0.15 : 1 }, i * 2);
+      if (i > 0) {
+        stTL.to(stops[i], { attr: { fill: '#B48A3C', stroke: '#B48A3C' }, opacity: 1, duration: 0.3 }, i * 2 + 0.7)
+            .fromTo(panel, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.7 }, i * 2 + 0.5);
+      }
+      if (i < panels.length - 1) stTL.to(panel, { opacity: 0, y: -30, duration: 0.6 }, i * 2 + 1.6);
+    });
+  }
+
+  /* ══════════ SCENE 3 · the pass — the film is scrubbed by your scroll ══════════ */
+  {
+    const video = $('#passVideo');
+    const lines = $$('.pass-line');
+    let target = 0, current = 0;
+    const passTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#passPin', start: 'top top', end: '+=340%', pin: true, scrub: 0.5,
+        onUpdate: self => { target = self.progress; }
+      }
+    });
+    lines.forEach((line, i) => {
+      passTL.fromTo(line, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1 }, i * 2 + 0.4)
+            .to(line, { opacity: 1, duration: 0.5 }, i * 2 + 1.4);
+      if (i < lines.length - 1) passTL.to(line, { opacity: 0, y: -36, duration: 0.8 }, i * 2 + 1.9);
+    });
+    /* smooth the currentTime toward scroll progress — glacial dolly under your thumb */
+    const scrub = () => {
+      if (video.duration) {
+        current += (target - current) * 0.12;
+        const t = current * (video.duration - 0.05);
+        if (Math.abs(video.currentTime - t) > 0.01) video.currentTime = t;
+      }
+      requestAnimationFrame(scrub);
+    };
+    video.addEventListener('loadedmetadata', () => { video.pause(); requestAnimationFrame(scrub); });
+  }
+
+  /* ══════════ relief · cards rise quietly ══════════ */
+  gsap.from('[data-rise]', {
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.12,
+    scrollTrigger: { trigger: '#lenders .cards', start: 'top 82%' }
+  });
+
+  /* ══════════ SCENE 4 · the convergence — the mark assembles under your scroll ══════════ */
+  const cvTL = gsap.timeline({
+    scrollTrigger: { trigger: '#cvPin', start: 'top top', end: '+=220%', pin: true, scrub: 0.6 }
+  });
+  cvTL.fromTo('#cvL', { x: -150, opacity: 0.25 }, { x: 0, opacity: 1, duration: 2 })
+      .fromTo('#cvR', { x: 150, opacity: 0.25 }, { x: 0, opacity: 1, duration: 2 }, '<')
+      .fromTo('#cvCore', { opacity: 0, scale: 0.2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.8 })
+      .fromTo('#cvHalo', { opacity: 0 }, { opacity: 0.28, duration: 0.8 }, '<')
+      .to('#cvHalo', { opacity: 0.12, duration: 0.8 })
+      .fromTo('#cvCopy', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2 }, '-=0.6');
+
+} else {
+  /* reduced motion or no GSAP: static, readable, everything visible */
+  $$('.road-line, .st-panel, .pass-line, .cv-copy').forEach(el => { el.style.opacity = 1; });
+  $('#cvCopy') && ($('#cvCopy').style.opacity = 1);
+  const path = document.getElementById('routePath');
+  if (path) {
+    const NS = 'http://www.w3.org/2000/svg';
+    ['intake','package','match','outreach','terms'].forEach((n, i) => {
+      const pt = path.getPointAtLength((i / 4) * path.getTotalLength());
+      const dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); dot.setAttribute('r', 7.5);
+      dot.setAttribute('fill', '#B48A3C');
+      document.getElementById('routeStops').appendChild(dot);
+    });
+  }
+}
