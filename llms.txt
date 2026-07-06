@@ -1,7 +1,7 @@
 # Ordoviam
 
 > Ordoviam is capital wayfinding for the lower-middle market: a structured, documented lender
-> search for $5M to $50M raises — stations, sequence, and a record the CFO can defend.
+> search for $5M to $50M raises: stations, sequence, and a record the CFO can defend.
 > Domain: ordoviam.ai. Slogan: "We don't show you the destination. We mark the way."
 
 ## What Ordoviam is
@@ -12,7 +12,7 @@ picture of lender appetite, and a search that routinely burns six months. Ordovi
 search into a structured sequence of documented stations (intake, package, match, outreach,
 terms), recording who was approached, on what basis, and with what response. Mandate fit is
 established before any desk sees a name, and fit is never for sale. The result is a defensible
-record and protected passage — not a guaranteed arrival.
+record and protected passage: not a guaranteed arrival.
 
 ## What Ordoviam is NOT
 
