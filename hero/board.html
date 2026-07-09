@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ordoviam logo color board</title>
+<meta name="robots" content="noindex" />
+<style>
+  @font-face { font-family: "Fraunces"; src: url("../assets/fonts/fraunces-var.woff2") format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "Inter"; src: url("../assets/fonts/inter-var.woff2") format("woff2"); font-weight: 100 900; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e7e2; font-family: "Inter", sans-serif; }
+  .board { width: 2000px; padding: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .tile { border-radius: 14px; overflow: hidden; background: #fff; }
+  .stage { height: 380px; display: grid; place-items: center; }
+  .lockup { text-align: center; }
+  .lockup svg { height: 150px; width: auto; display: block; margin: 0 auto; }
+  .lockup .word { font-family: "Fraunces", Georgia, serif; font-weight: 430; font-size: 44px; letter-spacing: 0.01em; display: block; margin-top: 22px; }
+  .meta { padding: 20px 26px 24px; display: flex; justify-content: space-between; align-items: baseline; background: #fdfdfc; }
+  .meta b { font: 600 21px "Inter", sans-serif; color: #26282b; }
+  .meta b small { font: 500 13px ui-monospace, Menlo, monospace; color: #8a8d92; margin-right: 10px; letter-spacing: 0.08em; }
+  .meta span { font: 500 13px ui-monospace, Menlo, monospace; color: #8a8d92; letter-spacing: 0.03em; }
+  .head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px 12px; }
+  .head h1 { font: 430 40px "Fraunces", Georgia, serif; color: #26282b; margin: 0; }
+  .head p { font: 500 14px ui-monospace, Menlo, monospace; color: #7c7f84; letter-spacing: 0.1em; margin: 0; }
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="head">
+    <h1>ordoviam · logo color explorations</h1>
+    <p>MARK AND TYPE LOCKED · COLORS FOR REVIEW · JUL 2026</p>
+  </div>
+  <script>
+    const PALETTES = [
+      ["01 Oxford",   "#f8f7f3", "#1c2b45", "#b08d45", "private-bank navy on warm paper"],
+      ["02 Slate",    "#fafaf8", "#3e4a57", "#a6885d", "cool gray-blue, quiet brass"],
+      ["03 Ledger",   "#ffffff", "#26282b", "#b99b5b", "charcoal on white, most minimal"],
+      ["04 Meridian", "#101b2d", "#c3a15d", "#c3a15d", "the dark option, evening navy"],
+      ["05 Verde",    "#f7f6f1", "#2e4237", "#ad8c4d", "heritage green, lightened"],
+      ["06 Stone",    "#f4f2ee", "#4a443e", "#9c6b3f", "warm neutral, quiet luxury"],
+    ];
+    document.currentScript.outerHTML = PALETTES.map(([name, ground, mark, accent, note]) => `
+      <div class="tile">
+        <div class="stage" style="background:${ground}">
+          <div class="lockup">
+            <svg viewBox="0 0 160 180"><g transform="translate(80,90)"><g fill="${mark}"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/></g><circle cx="0" cy="-14" r="6.5" fill="${accent}"/></g></svg>
+            <span class="word" style="color:${mark}">ordoviam</span>
+          </div>
+        </div>
+        <div class="meta">
+          <b><small>${name.split(' ')[0]}</small>${name.split(' ')[1]}</b>
+          <span>${ground} · ${mark} · ${accent}</span>
+        </div>
+      </div>`).join('');
+  </script>
+</div>
+</body>
+</html>

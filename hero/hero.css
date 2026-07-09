@@ -1,0 +1,209 @@
+/* Ordoviam hero exploration. Six palettes on the locked mark.
+   Direction: minimalistic elegance. Quiet ground, one accent moment (the light in the mark). */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../assets/fonts/fraunces-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* ---------- palettes: --ground, --text, --mark, --accent, --muted, --line ---------- */
+:root,
+[data-palette="oxford"]   { --ground:#f8f7f3; --text:#1c2b45; --mark:#1c2b45; --accent:#b08d45; --muted:#5f6a7e; --line:#e3e0d6; --panel:#10203a; --panel-text:#f4f3ee; }
+[data-palette="slate"]    { --ground:#fafaf8; --text:#38414c; --mark:#3e4a57; --accent:#a6885d; --muted:#6d7681; --line:#e6e5e1; --panel:#2c343e; --panel-text:#f5f4f1; }
+[data-palette="ledger"]   { --ground:#ffffff; --text:#26282b; --mark:#26282b; --accent:#b99b5b; --muted:#6b6e73; --line:#ebebe9; --panel:#1b1c1e; --panel-text:#f6f5f2; }
+[data-palette="meridian"] { --ground:#101b2d; --text:#f4f3ee; --mark:#c3a15d; --accent:#c3a15d; --muted:#93a0b4; --line:#243350; --panel:#0a1220; --panel-text:#f4f3ee; }
+[data-palette="verde"]    { --ground:#f7f6f1; --text:#27382e; --mark:#2e4237; --accent:#ad8c4d; --muted:#5e6d64; --line:#e4e2d8; --panel:#1d2c24; --panel-text:#f4f3ec; }
+[data-palette="stone"]    { --ground:#f4f2ee; --text:#3b3733; --mark:#4a443e; --accent:#9c6b3f; --muted:#726c65; --line:#e2ded7; --panel:#2b2723; --panel-text:#f5f3ef; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", -apple-system, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  transition: background-color 500ms ease, color 500ms ease;
+}
+
+.serif { font-family: "Fraunces", Georgia, serif; font-weight: 420; }
+
+/* ---------- the journey (two pages, horizontal) ---------- */
+.viewport { position: fixed; inset: 0; overflow: hidden; }
+.journey { height: 100%; }
+.page { height: 100%; position: relative; overflow: hidden; }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+}
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--text); }
+.brand svg { height: 26px; width: auto; display: block; }
+.brand .word { font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; letter-spacing: 0.01em; }
+.bar .ask {
+  font: 500 0.9375rem "Inter", sans-serif; color: var(--text); text-decoration: none;
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.55rem 1.1rem;
+  transition: border-color 150ms ease, background-color 150ms ease;
+  background: transparent; cursor: pointer;
+}
+.bar .ask:hover { border-color: var(--accent); }
+
+/* ---------- hero layout: text left, mark right ---------- */
+.hero-grid {
+  height: 100%; display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  align-items: center; gap: 2rem;
+  max-width: 82rem; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+@media (max-width: 56rem) {
+  .hero-grid { grid-template-columns: 1fr; align-content: center; gap: 0; text-align: center; }
+  .hero-mark-wrap { order: -1; margin-bottom: 1rem; }
+  .hero-mark-wrap svg { height: clamp(90px, 18vh, 150px) !important; }
+  .fork { justify-content: center; }
+}
+
+.eyebrow {
+  font: 600 0.75rem "Inter", sans-serif; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 1.1rem;
+}
+h1 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 440;
+  font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.08; margin: 0;
+  letter-spacing: -0.01em; text-wrap: balance;
+}
+.sub { color: var(--muted); max-width: 44ch; margin: 1.4rem 0 2.2rem; font-size: 1.0938rem; }
+@media (max-width: 56rem) { .sub { margin-left: auto; margin-right: auto; } }
+
+/* the fork: two paths, equal weight */
+.fork { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+.path {
+  display: block; text-decoration: none; cursor: pointer;
+  border-radius: 10px; padding: 1.05rem 1.4rem; min-width: 15.5rem;
+  border: 1.5px solid var(--line); background: transparent; color: var(--text);
+  text-align: left; font-family: inherit;
+  transition: border-color 160ms ease, transform 160ms cubic-bezier(0.22, 0.61, 0.21, 1), background-color 160ms ease;
+}
+.path:hover { border-color: var(--accent); transform: translateY(-2px); }
+.path b { display: block; font: 600 1.0313rem "Inter", sans-serif; }
+.path span { display: block; font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem; }
+.path.primary { background: var(--text); border-color: var(--text); color: var(--ground); }
+.path.primary span { color: var(--ground); opacity: 0.72; }
+.path.primary:hover { border-color: var(--text); }
+[data-palette="meridian"] .path.primary { background: var(--accent); border-color: var(--accent); color: #101b2d; }
+[data-palette="meridian"] .path.primary span { color: #101b2d; }
+
+.hint { margin-top: 1.6rem; font-size: 0.9063rem; color: var(--muted); }
+.hint button {
+  font: inherit; color: var(--text); background: none; border: none; padding: 0;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+
+/* ---------- the mark, on the side ---------- */
+.hero-mark-wrap { display: grid; place-items: center; }
+.hero-mark-wrap svg { height: clamp(200px, 44vh, 380px); width: auto; overflow: visible; }
+.hero-mark-wrap .planes path { fill: var(--mark); transition: fill 500ms ease; }
+.hero-mark-wrap .light { fill: var(--accent); transition: fill 500ms ease; }
+
+/* ---------- palette switcher (review tool) ---------- */
+.palettes {
+  position: fixed; bottom: 1.4rem; left: 50%; transform: translateX(-50%); z-index: 20;
+  display: flex; align-items: center; gap: 0.4rem;
+  background: color-mix(in srgb, var(--ground) 82%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.45rem 0.7rem;
+}
+.palettes .tag { font: 500 0.6875rem ui-monospace, Menlo, monospace; letter-spacing: 0.14em; color: var(--muted); margin-right: 0.35rem; }
+.swatch {
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+  padding: 0; position: relative; transition: transform 140ms ease, border-color 140ms ease;
+}
+.swatch:hover { transform: scale(1.12); }
+.swatch.active { border-color: var(--accent); }
+.swatch::after {
+  content: attr(data-name); position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+  font: 500 0.6875rem "Inter", sans-serif; color: var(--text); opacity: 0; pointer-events: none;
+  transition: opacity 140ms ease; white-space: nowrap;
+}
+.swatch:hover::after { opacity: 1; }
+
+/* ---------- chat page (Billie) ---------- */
+.page-chat { background: var(--panel); color: var(--panel-text); transition: background-color 500ms ease; }
+.chat-frame {
+  height: 100%; max-width: 46rem; margin: 0 auto; padding: 5.5rem clamp(1.25rem, 4vw, 2.5rem) 2rem;
+  display: flex; flex-direction: column;
+}
+.chat-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.6rem clamp(1.5rem, 5vw, 4rem);
+}
+.back {
+  font: 500 0.9375rem "Inter", sans-serif; color: var(--panel-text); background: none;
+  border: 1.5px solid color-mix(in srgb, var(--panel-text) 25%, transparent);
+  border-radius: 999px; padding: 0.55rem 1.1rem; cursor: pointer;
+  transition: border-color 150ms ease;
+}
+.back:hover { border-color: var(--accent); }
+.chat-id { display: flex; align-items: center; gap: 0.7rem; margin-left: auto; }
+.chat-id svg { height: 22px; width: auto; }
+.chat-id .who { font: 600 0.9375rem "Inter", sans-serif; }
+.chat-id .role { font: 400 0.8125rem "Inter", sans-serif; opacity: 0.6; display: block; }
+
+.thread { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.9rem; padding: 1rem 0; }
+.msg {
+  max-width: 72%; padding: 0.85rem 1.1rem; border-radius: 14px;
+  font-size: 0.9688rem; line-height: 1.55;
+  animation: msg-in 420ms cubic-bezier(0.22, 0.61, 0.21, 1) both;
+}
+@keyframes msg-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.msg.billie { background: color-mix(in srgb, var(--panel-text) 9%, transparent); border-top-left-radius: 4px; align-self: flex-start; }
+.msg.me { background: var(--accent); color: #14161a; border-top-right-radius: 4px; align-self: flex-end; }
+[data-palette="meridian"] .msg.me { color: #101b2d; }
+
+.chips { display: flex; gap: 0.6rem; flex-wrap: wrap; padding: 0.4rem 0 1rem; }
+.chip {
+  font: 500 0.875rem "Inter", sans-serif; color: var(--panel-text); background: none; cursor: pointer;
+  border: 1.5px solid color-mix(in srgb, var(--panel-text) 28%, transparent);
+  border-radius: 999px; padding: 0.5rem 1rem; transition: border-color 150ms ease;
+}
+.chip:hover { border-color: var(--accent); }
+
+.composer { display: flex; gap: 0.7rem; }
+.composer input {
+  flex: 1; font: 400 0.9688rem "Inter", sans-serif; color: var(--panel-text);
+  background: color-mix(in srgb, var(--panel-text) 7%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--panel-text) 18%, transparent);
+  border-radius: 12px; padding: 0.9rem 1.1rem; outline: none;
+}
+.composer input:focus { border-color: var(--accent); }
+.composer input::placeholder { color: color-mix(in srgb, var(--panel-text) 45%, transparent); }
+.composer button {
+  font: 600 0.9375rem "Inter", sans-serif; color: #14161a; background: var(--accent);
+  border: none; border-radius: 12px; padding: 0 1.4rem; cursor: pointer;
+  transition: filter 150ms ease;
+}
+.composer button:hover { filter: brightness(1.07); }
+[data-palette="meridian"] .composer button { color: #101b2d; }
+
+.demo-note {
+  text-align: center; font: 500 0.6875rem ui-monospace, Menlo, monospace;
+  letter-spacing: 0.12em; opacity: 0.45; padding-top: 0.9rem;
+}
+
+/* focus visibility everywhere */
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

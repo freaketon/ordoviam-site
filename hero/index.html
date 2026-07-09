@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-palette="oxford">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordoviam hero exploration: six palettes</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="hero.css?v=2" />
+</head>
+<body>
+
+<div class="viewport">
+  <div class="journey" id="journey">
+
+    <!-- ══════════ PAGE 1 · HERO ══════════ -->
+    <section class="page page-hero" data-page="hero">
+      <header class="bar">
+        <a class="brand" href="./" aria-label="Ordoviam">
+          <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)"><g class="planes-sm" fill="currentColor"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/></g><circle cx="0" cy="-14" r="6.5" fill="var(--accent)"/></g></svg>
+          <span class="word">ordoviam</span>
+        </a>
+        <button class="ask" data-go-chat>Ask Billie</button>
+      </header>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Commercial capital, $5M to $50M</p>
+          <h1>The clear path between borrowers and banks.</h1>
+          <p class="sub">Ordoviam matches businesses with lenders whose mandates actually fit,
+            and documents every step of the search. Start on your side of the deal.</p>
+          <div class="fork">
+            <button class="path primary" data-go-chat data-intent="capital">
+              <b>I need capital</b>
+              <span>For businesses raising $5M to $50M</span>
+            </button>
+            <button class="path" data-go-chat data-intent="lender">
+              <b>I'm a lender</b>
+              <span>For banks and private credit desks</span>
+            </button>
+          </div>
+          <p class="hint">Not sure where you fit? <button data-go-chat>Talk it through with Billie</button></p>
+        </div>
+
+        <div class="hero-mark-wrap" aria-hidden="true">
+          <!-- the locked Convergence mark; reveal: planes converge, the light drops in and blooms -->
+          <svg id="heroMark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(80,90)">
+              <g class="planes">
+                <g id="mL"><path d="M-6 -60 L-56 60 L-16 60 Z"/></g>
+                <g id="mR"><path d="M6 -60 L56 60 L16 60 Z"/></g>
+              </g>
+              <circle id="mLight" class="light" cx="0" cy="-14" r="6.5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PAGE 2 · BILLIE ══════════ -->
+    <section class="page page-chat" data-page="chat">
+      <div class="chat-top">
+        <button class="back" data-go-hero>Back</button>
+        <div class="chat-id">
+          <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)"><g fill="var(--accent)"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/><circle cx="0" cy="-14" r="6.5"/></g></g></svg>
+          <div><span class="who">Billie</span><span class="role">Your Ordoviam guide</span></div>
+        </div>
+      </div>
+
+      <div class="chat-frame">
+        <div class="thread" id="thread" aria-live="polite"></div>
+        <div class="chips" id="chips"></div>
+        <form class="composer" id="composer">
+          <input id="chatInput" type="text" placeholder="Tell Billie about your company or your desk" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+        <p class="demo-note">DESIGN PREVIEW: RESPONSES ARE SCRIPTED</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- palette review tool -->
+<div class="palettes" role="group" aria-label="Palette review">
+  <span class="tag">PALETTE</span>
+  <button class="swatch" data-palette-pick="oxford"   data-name="01 Oxford"   style="background:#1c2b45"></button>
+  <button class="swatch" data-palette-pick="slate"    data-name="02 Slate"    style="background:#3e4a57"></button>
+  <button class="swatch" data-palette-pick="ledger"   data-name="03 Ledger"   style="background:#26282b"></button>
+  <button class="swatch" data-palette-pick="meridian" data-name="04 Meridian" style="background:#101b2d; box-shadow: inset 0 0 0 7px #c3a15d"></button>
+  <button class="swatch" data-palette-pick="verde"    data-name="05 Verde"    style="background:#2e4237"></button>
+  <button class="swatch" data-palette-pick="stone"    data-name="06 Stone"    style="background:#4a443e"></button>
+</div>
+
+<script type="module" src="app.js?v=2"></script>
+</body>
+</html>
