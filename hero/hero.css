@@ -65,10 +65,13 @@ body {
   max-width: 82rem; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem);
 }
 @media (max-width: 56rem) {
-  .hero-grid { grid-template-columns: 1fr; align-content: center; gap: 0; text-align: center; }
-  .hero-mark-wrap { order: -1; margin-bottom: 1rem; }
-  .hero-mark-wrap svg { height: clamp(90px, 18vh, 150px) !important; }
+  .page { overflow-y: auto; }
+  .hero-grid { grid-template-columns: 1fr; align-content: start; gap: 0; text-align: center;
+    padding-top: 6.5rem; padding-bottom: 7rem; height: auto; min-height: 100%; }
+  .hero-mark-wrap { order: -1; margin-bottom: 1.2rem; }
+  .hero-mark-wrap svg { height: clamp(90px, 16vh, 140px) !important; }
   .fork { justify-content: center; }
+  .chat-frame { padding-bottom: 6.5rem; }
 }
 
 .eyebrow {
