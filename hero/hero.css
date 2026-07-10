@@ -113,14 +113,10 @@ body {
   opacity: var(--aurora, 1);
 }
 .aurora .a1 { width: 52vw; height: 52vw; right: -14vw; top: 4vh;
-  background: color-mix(in srgb, var(--accent) 22%, transparent);
-  animation: drift-a 44s ease-in-out infinite alternate; }
+  background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .aurora .a2 { width: 34vw; height: 34vw; left: -10vw; bottom: -16vh;
-  background: color-mix(in srgb, var(--mark) 12%, transparent);
-  animation: drift-b 56s ease-in-out infinite alternate; }
+  background: color-mix(in srgb, var(--mark) 12%, transparent); }
 .aurora .a3 { display: none; }
-@keyframes drift-a { to { transform: translate(-6vw, 8vh) scale(1.1); } }
-@keyframes drift-b { to { transform: translate(5vw, -6vh) scale(0.94); } }
 
 /* the mark: oversized, standing in the field, its left edge frosting through the glass */
 .hero-mark-wrap {
