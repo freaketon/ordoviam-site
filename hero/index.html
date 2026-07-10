@@ -6,7 +6,7 @@
   <title>Ordoviam hero exploration: six palettes</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="hero.css?v=4" />
+  <link rel="stylesheet" href="hero.css?v=6" />
 </head>
 <body>
 
@@ -23,8 +23,32 @@
         <button class="ask" data-go-chat>Ask Billie</button>
       </header>
 
-      <div class="hero-grid">
-        <div class="hero-copy">
+      <div class="stage">
+        <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+        <div class="hero-mark-wrap" aria-hidden="true">
+          <!-- the locked Convergence mark; reveal: planes converge, the light drops in and blooms -->
+          <svg id="heroMark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="planeGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color: var(--mark-hi)"/>
+                <stop offset="1" style="stop-color: var(--mark-lo)"/>
+              </linearGradient>
+              <radialGradient id="goldOrb" cx="0.36" cy="0.3" r="0.85">
+                <stop offset="0" style="stop-color: var(--accent-hi)"/>
+                <stop offset="0.55" style="stop-color: var(--accent)"/>
+                <stop offset="1" style="stop-color: var(--accent-lo)"/>
+              </radialGradient>
+            </defs>
+            <g transform="translate(80,90)">
+              <g class="planes">
+                <g id="mL"><path d="M-6 -60 L-56 60 L-16 60 Z"/></g>
+                <g id="mR"><path d="M6 -60 L56 60 L16 60 Z"/></g>
+              </g>
+              <circle id="mLight" class="light" cx="0" cy="-14" r="6.5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="glass-hero">
           <p class="eyebrow">Commercial capital, $5M to $50M</p>
           <h1>The clear path between borrowers and banks.</h1>
           <p class="sub">Ordoviam matches businesses with lenders whose mandates actually fit,
@@ -40,32 +64,6 @@
             </button>
           </div>
           <p class="hint">Not sure where you fit? <button data-go-chat>Talk it through with Billie</button></p>
-        </div>
-
-        <div class="hero-mark-wrap" aria-hidden="true">
-          <!-- the locked Convergence mark; reveal: planes converge, the light drops in and blooms -->
-          <svg id="heroMark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <!-- cut-stone shading on the planes: barely there, top-lit -->
-              <linearGradient id="planeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" style="stop-color: var(--mark-hi)"/>
-                <stop offset="1" style="stop-color: var(--mark-lo)"/>
-              </linearGradient>
-              <!-- the light as polished gold: off-center highlight reads as specular -->
-              <radialGradient id="goldOrb" cx="0.36" cy="0.3" r="0.85">
-                <stop offset="0" style="stop-color: var(--accent-hi)"/>
-                <stop offset="0.55" style="stop-color: var(--accent)"/>
-                <stop offset="1" style="stop-color: var(--accent-lo)"/>
-              </radialGradient>
-            </defs>
-            <g transform="translate(80,90)">
-              <g class="planes">
-                <g id="mL"><path d="M-6 -60 L-56 60 L-16 60 Z"/></g>
-                <g id="mR"><path d="M6 -60 L56 60 L16 60 Z"/></g>
-              </g>
-              <circle id="mLight" class="light" cx="0" cy="-14" r="6.5"/>
-            </g>
-          </svg>
         </div>
       </div>
     </section>
@@ -103,8 +101,14 @@
   <button class="swatch" data-palette-pick="meridian" data-name="04 Meridian" style="background:#101b2d; box-shadow: inset 0 0 0 7px #c3a15d"></button>
   <button class="swatch" data-palette-pick="verde"    data-name="05 Verde"    style="background:#2e4237"></button>
   <button class="swatch" data-palette-pick="stone"    data-name="06 Stone"    style="background:#4a443e"></button>
+  <button class="swatch" data-palette-pick="claret"   data-name="07 Claret"   style="background:#6d2433"></button>
+  <button class="swatch" data-palette-pick="ember"    data-name="08 Ember"    style="background:#b3541e"></button>
+  <button class="swatch" data-palette-pick="cobalt"   data-name="09 Cobalt"   style="background:#2244b8"></button>
+  <button class="swatch" data-palette-pick="plum"     data-name="10 Plum"     style="background:#6e2a58"></button>
+  <button class="swatch" data-palette-pick="petrol"   data-name="11 Petrol"   style="background:#17565e"></button>
+  <button class="swatch" data-palette-pick="orchid"   data-name="12 Orchid"   style="background:#16101c; box-shadow: inset 0 0 0 7px #c05a9e"></button>
 </div>
 
-<script type="module" src="app.js?v=4"></script>
+<script type="module" src="app.js?v=6"></script>
 </body>
 </html>

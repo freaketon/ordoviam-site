@@ -18,7 +18,9 @@ $$('[data-go-chat]').forEach(b => b.addEventListener('click', () => {
 $$('[data-go-hero]').forEach(b => b.addEventListener('click', () => journey.go('hero')));
 
 /* ---------- palette review ---------- */
-const KEYS = ['oxford', 'slate', 'ledger', 'meridian', 'verde', 'stone'];
+const KEYS = ['oxford', 'slate', 'ledger', 'meridian', 'verde', 'stone',
+              'claret', 'ember', 'cobalt', 'plum', 'petrol', 'orchid'];
+const KEYMAP = '1234567890-=';
 function setPalette(name) {
   document.documentElement.dataset.palette = name;
   $$('.swatch').forEach(s => s.classList.toggle('active', s.dataset.palettePick === name));
@@ -26,7 +28,7 @@ function setPalette(name) {
 $$('.swatch').forEach(s => s.addEventListener('click', () => setPalette(s.dataset.palettePick)));
 addEventListener('keydown', e => {
   if (e.target.matches('input, textarea')) return;
-  const i = +e.key - 1;
+  const i = KEYMAP.indexOf(e.key);
   if (i >= 0 && i < KEYS.length) setPalette(KEYS[i]);
 });
 setPalette('oxford');
