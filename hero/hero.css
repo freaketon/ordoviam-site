@@ -104,59 +104,34 @@ body {
   max-width: 88rem; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4.5rem);
 }
 
-/* aurora: soft fields of the palette drifting behind the glass, the page breathes */
+/* one field of light behind the mark; the page breathes, barely */
 .aurora { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
 .aurora i {
   position: absolute; display: block; border-radius: 50%;
-  filter: blur(90px); will-change: transform;
+  filter: blur(100px); will-change: transform;
   opacity: var(--aurora, 1);
 }
-[data-palette="meridian"] { --aurora: 0.55; }
-[data-palette="orchid"]   { --aurora: 0.5; }
-.aurora .a1 { width: 55vw; height: 55vw; left: -12vw; top: -18vw;
-  background: color-mix(in srgb, var(--mark) 26%, transparent);
-  animation: drift-a 34s ease-in-out infinite alternate; }
-.aurora .a2 { width: 42vw; height: 42vw; right: -10vw; bottom: -14vw;
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
-  animation: drift-b 27s ease-in-out infinite alternate; }
-.aurora .a3 { width: 30vw; height: 30vw; right: 14vw; top: -8vw;
-  background: color-mix(in srgb, var(--mark) 18%, transparent);
-  animation: drift-c 41s ease-in-out infinite alternate; }
-@keyframes drift-a { to { transform: translate(9vw, 7vh) scale(1.15); } }
-@keyframes drift-b { to { transform: translate(-7vw, -9vh) scale(0.92); } }
-@keyframes drift-c { to { transform: translate(-10vw, 10vh) scale(1.2); } }
+.aurora .a1 { width: 52vw; height: 52vw; right: -14vw; top: 4vh;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  animation: drift-a 44s ease-in-out infinite alternate; }
+.aurora .a2 { width: 34vw; height: 34vw; left: -10vw; bottom: -16vh;
+  background: color-mix(in srgb, var(--mark) 12%, transparent);
+  animation: drift-b 56s ease-in-out infinite alternate; }
+.aurora .a3 { display: none; }
+@keyframes drift-a { to { transform: translate(-6vw, 8vh) scale(1.1); } }
+@keyframes drift-b { to { transform: translate(5vw, -6vh) scale(0.94); } }
 
 /* the mark: oversized, standing in the field, its left edge frosting through the glass */
 .hero-mark-wrap {
   position: absolute; z-index: 1;
   right: clamp(1rem, 7vw, 8rem); top: 50%; transform: translateY(-50%);
 }
-.hero-mark-wrap svg { height: clamp(300px, 62vh, 560px); width: auto; overflow: visible; }
+.hero-mark-wrap svg { height: clamp(320px, 70vh, 640px); width: auto; overflow: visible; }
 
-/* the glass hero: the design IS the panel */
+/* type owns the page: no container, a real grid, optical margins */
 .glass-hero {
   position: relative; z-index: 2;
-  max-width: 46rem; padding: clamp(2rem, 4vw, 3.4rem);
-  border-radius: 30px;
-  background: color-mix(in srgb, var(--ground) 38%, transparent);
-  backdrop-filter: blur(26px) saturate(1.3);
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 55%, transparent),
-              inset 1px 0 0 color-mix(in srgb, #ffffff 20%, transparent),
-              0 28px 70px -30px color-mix(in srgb, var(--text) 50%, transparent);
-  animation: glass-breathe 22s ease-in-out infinite;
-}
-[data-palette="meridian"] .glass-hero, [data-palette="orchid"] .glass-hero,
-[data-palette="carbon"] .glass-hero, [data-palette="claretnoir"] .glass-hero,
-[data-palette="forest"] .glass-hero, [data-palette="petrolnoir"] .glass-hero {
-  background: color-mix(in srgb, var(--ground) 30%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 18%, transparent),
-              0 28px 70px -30px rgba(0, 0, 0, 0.6);
-}
-@keyframes glass-breathe {
-  0%, 100% { border-radius: 30px 34px 30px 38px; }
-  33%      { border-radius: 38px 30px 36px 30px; }
-  66%      { border-radius: 32px 38px 30px 34px; }
+  max-width: 58rem; padding: 0;
 }
 
 @media (max-width: 56rem) {
@@ -170,60 +145,41 @@ body {
 }
 
 .eyebrow {
-  font: 600 0.75rem "Inter", sans-serif; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 1.1rem;
+  font: 500 0.6875rem "Inter", sans-serif; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 1.8rem;
 }
 h1 {
-  font-family: "Fraunces", Georgia, serif; font-weight: 440;
-  font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.08; margin: 0;
-  letter-spacing: -0.01em; text-wrap: balance;
+  font-family: "Fraunces", Georgia, serif; font-weight: 360;
+  font-size: clamp(3rem, 6.6vw, 6.2rem); line-height: 1.02; margin: 0;
+  letter-spacing: -0.022em; text-wrap: balance;
 }
-.sub { color: var(--muted); max-width: 44ch; margin: 1.4rem 0 2.2rem; font-size: 1.0938rem; }
+.sub { color: var(--muted); max-width: 42ch; margin: 2rem 0 2.8rem; font-size: clamp(1.0625rem, 1.3vw, 1.1875rem); line-height: 1.65; }
 @media (max-width: 56rem) { .sub { margin-left: auto; margin-right: auto; } }
 
-/* the fork: two paths, equal weight */
-.fork { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+/* the fork: two confident controls */
+.fork { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
 .path {
-  display: block; text-decoration: none; cursor: pointer;
-  border-radius: 12px; padding: 1.05rem 1.4rem; min-width: 15.5rem;
-  border: 1px solid color-mix(in srgb, var(--text) 13%, transparent);
-  background: color-mix(in srgb, var(--ground) 40%, transparent);
-  backdrop-filter: blur(16px) saturate(1.15);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 50%, transparent),
-              0 12px 32px -16px color-mix(in srgb, var(--text) 40%, transparent);
-  color: var(--text); text-align: left; font-family: inherit;
-  position: relative; overflow: hidden;
-  transition: border-color 220ms ease, transform 220ms cubic-bezier(0.22, 0.61, 0.21, 1),
-              border-radius 220ms cubic-bezier(0.22, 0.61, 0.21, 1), box-shadow 220ms ease;
+  display: inline-flex; align-items: center; cursor: pointer;
+  border-radius: 999px; padding: 1rem 1.9rem;
+  font: 550 1rem "Inter", sans-serif; letter-spacing: 0.005em;
+  border: 1px solid color-mix(in srgb, var(--text) 22%, transparent);
+  background: transparent; color: var(--text); font-family: inherit;
+  transition: border-color 200ms ease, transform 220ms cubic-bezier(0.22, 0.61, 0.21, 1),
+              background-color 200ms ease, box-shadow 220ms ease;
 }
-/* a slow sheen crosses the glass on hover: light moving over a surface, not an effect */
-.path::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(105deg, transparent 42%, color-mix(in srgb, #ffffff 32%, transparent) 50%, transparent 58%);
-  transform: translateX(-130%);
-}
-.path:hover::after { transition: transform 800ms cubic-bezier(0.22, 0.61, 0.21, 1); transform: translateX(130%); }
-.path:hover {
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  transform: translateY(-2px); border-radius: 16px;
-  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 55%, transparent),
-              0 18px 40px -16px color-mix(in srgb, var(--text) 45%, transparent);
-}
-.path b { display: block; font: 600 1.0313rem "Inter", sans-serif; }
-.path span { display: block; font-size: 0.875rem; color: var(--muted); margin-top: 0.25rem; }
-/* the primary path is the light itself: brushed gold, top-lit */
+.path:hover { border-color: var(--text); transform: translateY(-1px); }
+.path b { font-weight: 550; }
+.path span { display: none; }
 .path.primary {
   background: linear-gradient(165deg, var(--accent-hi) 0%, var(--accent) 46%, var(--accent-lo) 100%);
-  border-color: color-mix(in srgb, var(--accent-lo) 65%, transparent);
+  border-color: color-mix(in srgb, var(--accent-lo) 55%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 55%, transparent),
-              inset 0 -1px 0 color-mix(in srgb, var(--accent-lo) 60%, transparent),
-              0 12px 32px -14px color-mix(in srgb, var(--accent-lo) 70%, transparent);
-  color: var(--on-accent); backdrop-filter: none;
+              0 10px 28px -14px color-mix(in srgb, var(--accent-lo) 80%, transparent);
+  color: var(--on-accent);
 }
-.path.primary span { color: var(--on-accent); opacity: 0.74; }
-.path.primary:hover { border-color: var(--accent-lo); }
+.path.primary:hover { border-color: var(--accent-lo); box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 60%, transparent), 0 14px 32px -14px color-mix(in srgb, var(--accent-lo) 90%, transparent); }
 
-.hint { margin-top: 1.6rem; font-size: 0.9063rem; color: var(--muted); }
+.hint { margin-top: 1.5rem; font-size: 0.875rem; color: var(--muted); }
 .hint button {
   font: inherit; color: var(--text); background: none; border: none; padding: 0;
   text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
@@ -258,7 +214,9 @@ h1 {
   box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 45%, transparent),
               0 14px 34px -16px color-mix(in srgb, var(--text) 45%, transparent);
 }
-.palettes { max-width: 94vw; flex-wrap: wrap; justify-content: center; border-radius: 24px; }
+.palettes { max-width: 94vw; flex-wrap: wrap; justify-content: center; border-radius: 24px;
+  left: auto; right: 1.4rem; transform: none; scale: 0.92; transform-origin: bottom right; }
+@media (max-width: 56rem) { .palettes { left: 50%; right: auto; transform: translateX(-50%); } }
 .palettes .tag { font: 500 0.6875rem ui-monospace, Menlo, monospace; letter-spacing: 0.14em; color: var(--muted); margin-right: 0.35rem; }
 .swatch {
   width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
