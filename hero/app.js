@@ -19,8 +19,9 @@ $$('[data-go-hero]').forEach(b => b.addEventListener('click', () => journey.go('
 
 /* ---------- palette review ---------- */
 const KEYS = ['oxford', 'slate', 'ledger', 'meridian', 'verde', 'stone',
-              'claret', 'ember', 'cobalt', 'plum', 'petrol', 'orchid'];
-const KEYMAP = '1234567890-=';
+              'claret', 'ember', 'cobalt', 'plum', 'petrol', 'orchid',
+              'carbon', 'claretnoir', 'forest', 'petrolnoir'];
+const KEYMAP = '1234567890-=qwer';
 function setPalette(name) {
   document.documentElement.dataset.palette = name;
   $$('.swatch').forEach(s => s.classList.toggle('active', s.dataset.palettePick === name));
@@ -61,9 +62,32 @@ setPalette('oxford');
     R.setAttribute('transform', 'translate(0,0)');
     L.style.opacity = R.style.opacity = 1;
     light.setAttribute('cy', -14); light.setAttribute('r', 6.5); light.style.opacity = 1;
+    document.getElementById('heroMark').classList.add('settled');
   }
   requestAnimationFrame(frame);
   setTimeout(finalize, DUR + 400); /* guarantees the resolved mark even in throttled tabs */
+})();
+
+/* ---------- the mark answers the hand: quiet pointer parallax ---------- */
+(function parallax() {
+  if (reduced || matchMedia('(pointer: coarse)').matches) return;
+  const svg = $('#heroMark');
+  const zone = $('.page-hero');
+  let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+  zone.addEventListener('pointermove', e => {
+    const r = zone.getBoundingClientRect();
+    tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    if (!raf) raf = requestAnimationFrame(step);
+  });
+  zone.addEventListener('pointerleave', () => { tx = ty = 0; if (!raf) raf = requestAnimationFrame(step); });
+  function step() {
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+    svg.style.transform = `rotateY(${cx * 6}deg) rotateX(${-cy * 4}deg) translateX(${cx * 8}px)`;
+    if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(step);
+    else raf = null;
+  }
 })();
 
 /* ---------- Billie: scripted design preview ---------- */

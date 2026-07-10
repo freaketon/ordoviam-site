@@ -40,6 +40,14 @@
                             --accent-hi:#d5b57c; --accent-lo:#816734; --mark-hi:#1e6570; --mark-lo:#11454c; --grain:0.05; --on-accent:#171207; }
 [data-palette="orchid"]   { --ground:#16101c; --text:#f4f0f6; --mark:#c05a9e; --accent:#d998c0; --muted:#a893b3; --line:#2e2338; --panel:#0e0a12; --panel-text:#f4f0f6;
                             --accent-hi:#f0c1de; --accent-lo:#a05f88; --mark-hi:#d372b2; --mark-lo:#a2477f; --grain:0.075; --on-accent:#2a0f20; }
+[data-palette="carbon"]   { --ground:#131313; --text:#f2efe9; --mark:#e9e4da; --accent:#c2a35f; --muted:#a7a49d; --line:#2b2b2a; --panel:#0b0b0b; --panel-text:#f2efe9;
+                            --accent-hi:#ecd096; --accent-lo:#8f7440; --mark-hi:#f6f2ea; --mark-lo:#d3ccbd; --grain:0.08; --on-accent:#191408; --aurora:0.4; }
+[data-palette="claretnoir"] { --ground:#1a0c11; --text:#f6eef0; --mark:#c14d64; --accent:#ad8a4c; --muted:#b39aa1; --line:#332027; --panel:#10070a; --panel-text:#f6eef0;
+                            --accent-hi:#d6b47c; --accent-lo:#7f6231; --mark-hi:#d3607a; --mark-lo:#a63c52; --grain:0.075; --on-accent:#1f130a; --aurora:0.5; }
+[data-palette="forest"]   { --ground:#0c1712; --text:#eef4ef; --mark:#4f8f6b; --accent:#ad8c4d; --muted:#9db3a5; --line:#22322a; --panel:#071009; --panel-text:#eef4ef;
+                            --accent-hi:#d5b57c; --accent-lo:#816734; --mark-hi:#5fa37c; --mark-lo:#3f7757; --grain:0.075; --on-accent:#171207; --aurora:0.5; }
+[data-palette="petrolnoir"] { --ground:#071b1f; --text:#ecf4f4; --mark:#46a8b3; --accent:#c2a35f; --muted:#93adb0; --line:#173338; --panel:#041114; --panel-text:#ecf4f4;
+                            --accent-hi:#ecd096; --accent-lo:#8f7440; --mark-hi:#5cbcc7; --mark-lo:#35909a; --grain:0.075; --on-accent:#191408; --aurora:0.5; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; overflow: hidden; }
@@ -138,7 +146,9 @@ body {
               0 28px 70px -30px color-mix(in srgb, var(--text) 50%, transparent);
   animation: glass-breathe 22s ease-in-out infinite;
 }
-[data-palette="meridian"] .glass-hero, [data-palette="orchid"] .glass-hero {
+[data-palette="meridian"] .glass-hero, [data-palette="orchid"] .glass-hero,
+[data-palette="carbon"] .glass-hero, [data-palette="claretnoir"] .glass-hero,
+[data-palette="forest"] .glass-hero, [data-palette="petrolnoir"] .glass-hero {
   background: color-mix(in srgb, var(--ground) 30%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 18%, transparent),
               0 28px 70px -30px rgba(0, 0, 0, 0.6);
@@ -226,6 +236,16 @@ h1 {
 .hero-mark-wrap .light { fill: url(#goldOrb); transform-box: fill-box; transform-origin: 50% 50%;
   animation: light-breathe 6.5s ease-in-out 3.2s infinite; }
 @keyframes light-breathe { 50% { transform: scale(1.14); } }
+
+/* the light illuminates: halo, spill down the channel, rim on the inner faces, a floor reflection.
+   All of it wakes only after the reveal resolves. */
+#heroMark .fx { opacity: 0; transition: opacity 1200ms ease; }
+#heroMark.settled .fx { opacity: 1; }
+#heroMark .halo { animation: light-breathe 6.5s ease-in-out 3.2s infinite; transform-box: fill-box; transform-origin: 50% 50%; }
+#heroMark .reflection { opacity: 0; transition: opacity 1600ms ease; }
+#heroMark.settled .reflection { opacity: 0.14; }
+.hero-mark-wrap { perspective: 900px; }
+.hero-mark-wrap svg { transition: transform 200ms ease-out; will-change: transform; }
 
 /* ---------- palette switcher (review tool) ---------- */
 .palettes {
