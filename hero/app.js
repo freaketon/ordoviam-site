@@ -9,7 +9,15 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- the journey ---------- */
 const journey = new Journey($('#journey'), {
-  onChange: name => { if (name === 'chat') startChat(); }
+  onChange: name => {
+    if (name === 'chat') {
+      startChat();
+      const pg = $('.page-chat');
+      pg.classList.remove('arriving');
+      void pg.offsetWidth;
+      pg.classList.add('arriving');
+    }
+  }
 });
 $$('[data-go-chat]').forEach(b => b.addEventListener('click', () => {
   intent = b.dataset.intent || null;
@@ -82,8 +90,8 @@ setPalette('oxford');
   });
   zone.addEventListener('pointerleave', () => { tx = ty = 0; if (!raf) raf = requestAnimationFrame(step); });
   function step() {
-    cx += (tx - cx) * 0.06;
-    cy += (ty - cy) * 0.06;
+    cx += (tx - cx) * 0.045;
+    cy += (ty - cy) * 0.045;
     svg.style.transform = `rotateY(${cx * 6}deg) rotateX(${-cy * 4}deg) translateX(${cx * 8}px)`;
     if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(step);
     else raf = null;
