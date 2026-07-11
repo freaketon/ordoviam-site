@@ -64,7 +64,7 @@ setTimeout(() => $$('.mark-photo').forEach(el => el.classList.add('in')), 900);
   function step() {
     cx += (tx - cx) * 0.045;
     cy += (ty - cy) * 0.045;
-    svg.style.transform = `rotateY(${cx * 6}deg) rotateX(${-cy * 4}deg) translateX(${cx * 8}px)`;
+    svg.style.transform = `translateY(-50%) rotateY(${cx * 6}deg) rotateX(${-cy * 4}deg) translateX(${cx * 8}px)`;
     if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(step);
     else raf = null;
   }

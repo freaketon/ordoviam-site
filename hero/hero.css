@@ -125,8 +125,8 @@ body {
 }
 .mark-photo {
   height: clamp(380px, 78vh, 720px); width: auto; display: block;
-  mask-image: radial-gradient(ellipse 60% 56% at 50% 47%, black 52%, transparent 76%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 56% at 50% 47%, black 52%, transparent 76%);
+  mask-image: radial-gradient(ellipse 58% 55% at 50% 47%, black 46%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 58% 55% at 50% 47%, black 46%, transparent 70%);
   opacity: 0; transform: scale(1.03);
   transition: opacity 1400ms cubic-bezier(0.22, 0.61, 0.21, 1), transform 1800ms cubic-bezier(0.22, 0.61, 0.21, 1);
 }
@@ -148,7 +148,7 @@ body {
 @media (max-width: 56rem) {
   .page { overflow-y: auto; }
   .stage { align-content: start; padding-top: 6.2rem; padding-bottom: 7rem; height: auto; min-height: 100%; }
-  .hero-mark-wrap { position: static; transform: none; display: grid; place-items: center; margin-bottom: -2.4rem; }
+  .hero-mark-wrap { position: static; transform: none !important; display: grid; place-items: center; margin-bottom: -2.4rem; }
   .mark-photo { height: clamp(220px, 34vh, 320px); }
   .glass-hero { text-align: center; margin: 0 auto; }
   .fork { justify-content: center; }
