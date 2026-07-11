@@ -1,95 +1,99 @@
 <!doctype html>
-<html lang="en" data-palette="oxford">
+<html lang="en" data-world="navy" data-mode="day">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ordoviam hero exploration: six palettes</title>
+  <title>Ordoviam: five worlds, day and night</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="hero.css?v=13" />
+  <link rel="stylesheet" href="hero.css?v=15" />
 </head>
 <body>
 
 <div class="viewport">
   <div class="journey" id="journey">
 
-    <!-- ══════════ PAGE 1 · HERO ══════════ -->
+    <!-- ══════════ PAGE 1 · HERO (the constitution) ══════════ -->
     <section class="page page-hero" data-page="hero">
       <header class="bar">
-        <a class="brand" href="./" aria-label="Ordoviam">
-          <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)"><g class="planes-sm" fill="currentColor"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/></g><circle cx="0" cy="-14" r="6.5" fill="var(--accent)"/></g></svg>
+        <a class="brand-lockup" href="./" aria-label="Ordoviam">
+          <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)"><g fill="currentColor"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/></g><circle cx="0" cy="-14" r="6.5" fill="var(--brass)"/></g></svg>
           <span class="word">ordoviam</span>
         </a>
-        <button class="ask" data-go-chat>Ask Billie</button>
+        <button class="pill ask" data-go-chat>Ask Billie</button>
       </header>
 
-      <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
       <div class="stage">
-        <div class="hero-mark-wrap" aria-hidden="true">
-          <!-- the mark, photographed: slate and brass, museum light. Vector stays canonical; this is its portrait. -->
-          <img class="mark-photo photo-light" src="../assets/renders/mark-light.jpg" alt="" width="928" height="1152" />
-          <img class="mark-photo photo-dark" src="../assets/renders/mark-dark.jpg" alt="" width="928" height="1152" />
-        </div>
-        <div class="glass-hero">
-          <p class="eyebrow">Commercial capital, $5M to $50M</p>
-          <h1>The clear path between borrowers and banks.</h1>
-          <p class="sub">Ordoviam matches businesses with lenders whose mandates actually fit,
-            and documents every step of the search. Start on your side of the deal.</p>
-          <div class="fork">
-            <button class="path primary" data-go-chat data-intent="capital"><b>I need capital</b></button>
-            <button class="path" data-go-chat data-intent="lender"><b>I'm a lender</b></button>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow label">Commercial capital, $5M to $50M</p>
+            <h1>The clear path between borrowers and banks<span class="stop">.</span></h1>
+            <p class="sub">Ordoviam matches businesses with lenders whose mandates actually fit,
+              and documents every step of the search. Start on your side of the deal.</p>
+            <div class="fork">
+              <button class="pill brand" data-go-chat data-intent="capital">I need capital</button>
+              <button class="pill" data-go-chat data-intent="lender">I'm a lender</button>
+            </div>
+            <p class="hint">Businesses raising $5M to $50M. Banks and private credit desks.
+              Unsure? <button class="draw-link" data-go-chat>Ask Billie</button></p>
           </div>
-          <p class="hint">Businesses raising $5M to $50M. Banks and private credit desks.
-            Unsure? <button data-go-chat>Ask Billie</button></p>
+
+          <div class="hero-art" aria-hidden="true">
+            <img class="photo-day" src="../assets/renders/mark-light.jpg" alt="" width="928" height="1152" />
+            <img class="photo-night" src="../assets/renders/mark-dark.jpg" alt="" width="928" height="1152" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ PAGE 2 · BILLIE ══════════ -->
+    <!-- ══════════ PAGE 2 · THE STUDY ══════════ -->
     <section class="page page-chat" data-page="chat">
-      <div class="chat-top">
-        <button class="back" data-go-hero>Back</button>
-        <div class="chat-id">
-          <svg viewBox="0 0 160 180" aria-hidden="true"><g transform="translate(80,90)"><g fill="var(--accent)"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/><circle cx="0" cy="-14" r="6.5"/></g></g></svg>
-          <div><span class="who">Billie</span><span class="role">Your Ordoviam guide</span></div>
-        </div>
+      <div class="study-top">
+        <button class="pill back" data-go-hero>Back</button>
+        <span class="study-label label">The Study · Intake</span>
       </div>
 
-      <div class="chat-frame">
-        <div class="thread" id="thread" aria-live="polite"></div>
-        <div class="chips" id="chips"></div>
-        <form class="composer" id="composer">
-          <input id="chatInput" type="text" placeholder="Tell Billie about your company or your desk" autocomplete="off" />
-          <button type="submit">Send</button>
-        </form>
-        <p class="demo-note">DESIGN PREVIEW: RESPONSES ARE SCRIPTED</p>
+      <div class="study-frame">
+        <aside class="rail" aria-label="Where this conversation sits on the journey">
+          <div class="rail-line">
+            <div class="station current" id="st-intake"><span>Intake</span></div>
+            <div class="station"><span>Package</span></div>
+            <div class="station"><span>Match</span></div>
+            <div class="station"><span>Outreach</span></div>
+            <div class="station"><span>Terms</span></div>
+          </div>
+        </aside>
+
+        <div class="study-main">
+          <div class="orb-seat">
+            <span class="orb" id="orb" aria-hidden="true"></span>
+            <div><span class="who">Billie</span><span class="role">Your Ordoviam guide</span></div>
+          </div>
+          <div class="transcript" id="transcript" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+          <form class="composer" id="composer">
+            <input id="chatInput" type="text" placeholder="Write your answer. It becomes part of the record." autocomplete="off" />
+            <button class="commit" type="submit" aria-label="Add to the record">&#8594;</button>
+          </form>
+          <p class="specimen">DESIGN PREVIEW · RESPONSES ARE SCRIPTED · THE REAL BILLIE ARRIVES WITH THE PRODUCT</p>
+        </div>
       </div>
     </section>
 
   </div>
 </div>
 
-<!-- palette review tool -->
-<div class="palettes" role="group" aria-label="Palette review">
-  <span class="tag">PALETTE</span>
-  <button class="swatch" data-palette-pick="oxford"   data-name="01 Oxford"   style="background:#1c2b45"></button>
-  <button class="swatch" data-palette-pick="slate"    data-name="02 Slate"    style="background:#3e4a57"></button>
-  <button class="swatch" data-palette-pick="ledger"   data-name="03 Ledger"   style="background:#26282b"></button>
-  <button class="swatch" data-palette-pick="meridian" data-name="04 Meridian" style="background:#101b2d; box-shadow: inset 0 0 0 7px #c3a15d"></button>
-  <button class="swatch" data-palette-pick="verde"    data-name="05 Verde"    style="background:#2e4237"></button>
-  <button class="swatch" data-palette-pick="stone"    data-name="06 Stone"    style="background:#4a443e"></button>
-  <button class="swatch" data-palette-pick="claret"   data-name="07 Claret"   style="background:#6d2433"></button>
-  <button class="swatch" data-palette-pick="ember"    data-name="08 Ember"    style="background:#b3541e"></button>
-  <button class="swatch" data-palette-pick="cobalt"   data-name="09 Cobalt"   style="background:#2244b8"></button>
-  <button class="swatch" data-palette-pick="plum"     data-name="10 Plum"     style="background:#6e2a58"></button>
-  <button class="swatch" data-palette-pick="petrol"   data-name="11 Petrol"   style="background:#17565e"></button>
-  <button class="swatch" data-palette-pick="orchid"   data-name="12 Orchid"   style="background:#16101c; box-shadow: inset 0 0 0 7px #c05a9e"></button>
-  <button class="swatch" data-palette-pick="carbon"     data-name="13 Carbon"      style="background:#131313; box-shadow: inset 0 0 0 7px #e9e4da"></button>
-  <button class="swatch" data-palette-pick="claretnoir" data-name="14 Claret Noir" style="background:#1a0c11; box-shadow: inset 0 0 0 7px #c14d64"></button>
-  <button class="swatch" data-palette-pick="forest"     data-name="15 Forest"      style="background:#0c1712; box-shadow: inset 0 0 0 7px #4f8f6b"></button>
-  <button class="swatch" data-palette-pick="petrolnoir" data-name="16 Petrol Noir" style="background:#071b1f; box-shadow: inset 0 0 0 7px #46a8b3"></button>
+<!-- review chrome: a tool, not design -->
+<div class="chrome" role="group" aria-label="World and mode review">
+  <span class="tag">WORLD</span>
+  <button class="wdot" data-world-pick="charcoal" data-name="Charcoal &amp; Brass" style="background:#26282b"></button>
+  <button class="wdot" data-world-pick="slate"    data-name="Slate &amp; Brass"    style="background:#46566a"></button>
+  <button class="wdot" data-world-pick="navy"     data-name="Navy &amp; Brass"     style="background:#24407c"></button>
+  <button class="wdot" data-world-pick="oxblood"  data-name="Oxblood &amp; Brass"  style="background:#6d1f2c"></button>
+  <button class="wdot" data-world-pick="copper"   data-name="Copper &amp; Sienna"  style="background:#96491f"></button>
+  <button class="modeflip" id="modeflip">Night</button>
 </div>
 
-<script type="module" src="app.js?v=13"></script>
+<script type="module" src="app.js?v=15"></script>
 </body>
 </html>
