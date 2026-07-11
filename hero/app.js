@@ -22,10 +22,12 @@ $$('[data-go-hero]').forEach(b => b.addEventListener('click', () => journey.go('
 const WORLDS = ['charcoal', 'slate', 'navy', 'oxblood', 'copper'];
 function setWorld(w) {
   document.documentElement.dataset.world = w;
+  localStorage.setItem('ordoviam-world', w);
   $$('.wdot').forEach(d => d.classList.toggle('active', d.dataset.worldPick === w));
 }
 function setMode(m) {
   document.documentElement.dataset.mode = m;
+  localStorage.setItem('ordoviam-mode', m);
   $('#modeflip').textContent = m === 'day' ? 'Night' : 'Day';
 }
 $$('.wdot').forEach(d => d.addEventListener('click', () => setWorld(d.dataset.worldPick)));
@@ -37,7 +39,8 @@ addEventListener('keydown', e => {
   if (i >= 0 && i < WORLDS.length) setWorld(WORLDS[i]);
   if (e.key === 'd') setMode(document.documentElement.dataset.mode === 'day' ? 'night' : 'day');
 });
-setWorld('navy');
+setWorld(localStorage.getItem('ordoviam-world') || 'navy');
+setMode(localStorage.getItem('ordoviam-mode') || 'day');
 
 /* ---------- the artifact arrives once ---------- */
 addEventListener('load', () => requestAnimationFrame(() =>
