@@ -6,7 +6,7 @@
   <title>Ordoviam hero exploration: six palettes</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="hero.css?v=11" />
+  <link rel="stylesheet" href="hero.css?v=12" />
 </head>
 <body>
 
@@ -26,70 +26,9 @@
       <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
       <div class="stage">
         <div class="hero-mark-wrap" aria-hidden="true">
-          <!-- the locked Convergence mark; reveal: planes converge, the light drops in and blooms -->
-          <svg id="heroMark" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <!-- cut material: a whisper of top light, diagonal so it never bands -->
-              <linearGradient id="planeGrad" x1="0.1" y1="0" x2="0.35" y2="1">
-                <stop offset="0.2" style="stop-color: var(--mark-hi)"/>
-                <stop offset="0.95" style="stop-color: var(--mark-lo)"/>
-              </linearGradient>
-              <!-- the light: soft core, desaturating edge, no hot spot -->
-              <radialGradient id="goldOrb" cx="0.38" cy="0.32" r="0.78">
-                <stop offset="0" style="stop-color: var(--accent-hi)"/>
-                <stop offset="0.45" style="stop-color: var(--accent)"/>
-                <stop offset="0.85" style="stop-color: var(--accent-lo)"/>
-                <stop offset="1" style="stop-color: var(--accent-lo)" stop-opacity="0.9"/>
-              </radialGradient>
-              <radialGradient id="orbHalo" cx="0.5" cy="0.5" r="0.5">
-                <stop offset="0" style="stop-color: var(--accent-hi)" stop-opacity="0.4"/>
-                <stop offset="0.55" style="stop-color: var(--accent)" stop-opacity="0.12"/>
-                <stop offset="1" style="stop-color: var(--accent)" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="spill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" style="stop-color: var(--accent-hi)" stop-opacity="0.32"/>
-                <stop offset="1" style="stop-color: var(--accent)" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="0" y1="-60" x2="0" y2="60">
-                <stop offset="0" style="stop-color: var(--accent-hi)" stop-opacity="0"/>
-                <stop offset="0.38" style="stop-color: var(--accent-hi)" stop-opacity="0.6"/>
-                <stop offset="0.95" style="stop-color: var(--accent-hi)" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="fadeRef" gradientUnits="userSpaceOnUse" x1="0" y1="62" x2="0" y2="104">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset="1" stop-color="#000000"/>
-              </linearGradient>
-              <mask id="refMask"><rect x="-90" y="60" width="180" height="46" fill="url(#fadeRef)"/></mask>
-              <filter id="fSoft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="0.7"/></filter>
-              <filter id="fSpill" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="2.6"/></filter>
-              <filter id="fAO" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3"/></filter>
-              <filter id="fRef" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2"/></filter>
-            </defs>
-            <g transform="translate(80,90)">
-              <!-- contact shadow: the mark stands on something -->
-              <ellipse class="fx" cx="0" cy="61.5" rx="48" ry="3.4" filter="url(#fAO)" opacity="0.2" style="fill: var(--mark-lo)"/>
-              <g id="markCore">
-                <!-- light spilling down the channel, soft-edged -->
-                <path class="fx" d="M0 -9 L-11.5 60 L11.5 60 Z" fill="url(#spill)" filter="url(#fSpill)"/>
-                <g class="planes">
-                  <g id="mL"><path d="M-6 -60 L-56 60 L-16 60 Z"/></g>
-                  <g id="mR"><path d="M6 -60 L56 60 L16 60 Z"/></g>
-                </g>
-                <!-- the inner faces catch the light: blurred, not drawn -->
-                <g class="fx" filter="url(#fSoft)">
-                  <line x1="-6" y1="-60" x2="-16" y2="60" stroke="url(#rim)" stroke-width="1.5"/>
-                  <line x1="6" y1="-60" x2="16" y2="60" stroke="url(#rim)" stroke-width="1.5"/>
-                </g>
-                <!-- ambient occlusion under the light, then the light itself -->
-                <ellipse class="fx" cx="0" cy="-5" rx="6" ry="9" filter="url(#fAO)" opacity="0.22" style="fill: var(--mark-lo)"/>
-                <circle class="fx halo" cx="0" cy="-14" r="26" fill="url(#orbHalo)"/>
-                <circle id="mLight" class="light" cx="0" cy="-14" r="6.5"/>
-              </g>
-              <g class="reflection" mask="url(#refMask)" filter="url(#fRef)">
-                <use href="#markCore" transform="translate(0,120) scale(1,-1)"/>
-              </g>
-            </g>
-          </svg>
+          <!-- the mark, photographed: slate and brass, museum light. Vector stays canonical; this is its portrait. -->
+          <img class="mark-photo photo-light" src="../assets/renders/mark-light.jpg" alt="" width="928" height="1152" />
+          <img class="mark-photo photo-dark" src="../assets/renders/mark-dark.jpg" alt="" width="928" height="1152" />
         </div>
         <div class="glass-hero">
           <p class="eyebrow">Commercial capital, $5M to $50M</p>
@@ -151,6 +90,6 @@
   <button class="swatch" data-palette-pick="petrolnoir" data-name="16 Petrol Noir" style="background:#071b1f; box-shadow: inset 0 0 0 7px #46a8b3"></button>
 </div>
 
-<script type="module" src="app.js?v=11"></script>
+<script type="module" src="app.js?v=12"></script>
 </body>
 </html>

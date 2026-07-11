@@ -118,12 +118,26 @@ body {
   background: color-mix(in srgb, var(--mark) 12%, transparent); }
 .aurora .a3 { display: none; }
 
-/* the mark: oversized, standing in the field, its left edge frosting through the glass */
+/* the mark, photographed: it melts into the ground through a soft mask */
 .hero-mark-wrap {
   position: absolute; z-index: 1;
-  right: clamp(1rem, 7vw, 8rem); top: 50%; transform: translateY(-50%);
+  right: clamp(0rem, 5vw, 6rem); top: 50%; transform: translateY(-50%);
 }
-.hero-mark-wrap svg { height: clamp(320px, 70vh, 640px); width: auto; overflow: visible; }
+.mark-photo {
+  height: clamp(380px, 78vh, 720px); width: auto; display: block;
+  mask-image: radial-gradient(ellipse 60% 56% at 50% 47%, black 52%, transparent 76%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 56% at 50% 47%, black 52%, transparent 76%);
+  opacity: 0; transform: scale(1.03);
+  transition: opacity 1400ms cubic-bezier(0.22, 0.61, 0.21, 1), transform 1800ms cubic-bezier(0.22, 0.61, 0.21, 1);
+}
+.mark-photo.in { opacity: 1; transform: none; }
+.photo-dark { display: none; }
+[data-palette="meridian"] .photo-dark, [data-palette="orchid"] .photo-dark,
+[data-palette="carbon"] .photo-dark, [data-palette="claretnoir"] .photo-dark,
+[data-palette="forest"] .photo-dark, [data-palette="petrolnoir"] .photo-dark { display: block; }
+[data-palette="meridian"] .photo-light, [data-palette="orchid"] .photo-light,
+[data-palette="carbon"] .photo-light, [data-palette="claretnoir"] .photo-light,
+[data-palette="forest"] .photo-light, [data-palette="petrolnoir"] .photo-light { display: none; }
 
 /* type owns the page: no container, a real grid, optical margins */
 .glass-hero {
@@ -134,8 +148,8 @@ body {
 @media (max-width: 56rem) {
   .page { overflow-y: auto; }
   .stage { align-content: start; padding-top: 6.2rem; padding-bottom: 7rem; height: auto; min-height: 100%; }
-  .hero-mark-wrap { position: static; transform: none; display: grid; place-items: center; margin-bottom: -3.2rem; }
-  .hero-mark-wrap svg { height: clamp(130px, 22vh, 190px); }
+  .hero-mark-wrap { position: static; transform: none; display: grid; place-items: center; margin-bottom: -2.4rem; }
+  .mark-photo { height: clamp(220px, 34vh, 320px); }
   .glass-hero { text-align: center; margin: 0 auto; }
   .fork { justify-content: center; }
   .chat-frame { padding-bottom: 6.5rem; }
@@ -187,20 +201,8 @@ h1 {
 /* ---------- the mark, on the side ---------- */
 .hero-mark-wrap { display: grid; place-items: center; }
 .hero-mark-wrap svg { height: clamp(200px, 44vh, 380px); width: auto; overflow: visible; }
-.hero-mark-wrap .planes path { fill: url(#planeGrad); }
-.hero-mark-wrap .light { fill: url(#goldOrb); transform-box: fill-box; transform-origin: 50% 50%;
-  animation: light-breathe 6.5s ease-in-out 3.2s infinite; }
-@keyframes light-breathe { 50% { transform: scale(1.14); } }
-
-/* the light illuminates: halo, spill down the channel, rim on the inner faces, a floor reflection.
-   All of it wakes only after the reveal resolves. */
-#heroMark .fx { opacity: 0; transition: opacity 1200ms ease; }
-#heroMark.settled .fx { opacity: 1; }
-#heroMark .halo { animation: light-breathe 6.5s ease-in-out 3.2s infinite; transform-box: fill-box; transform-origin: 50% 50%; }
-#heroMark .reflection { opacity: 0; transition: opacity 1600ms ease; }
-#heroMark.settled .reflection { opacity: 0.1; }
 .hero-mark-wrap { perspective: 900px; }
-.hero-mark-wrap svg { transition: transform 200ms ease-out; will-change: transform; }
+.hero-mark-wrap img { will-change: transform; }
 
 /* ---------- palette switcher (review tool) ---------- */
 .palettes {

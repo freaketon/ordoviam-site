@@ -42,44 +42,16 @@ addEventListener('keydown', e => {
 });
 setPalette('oxford');
 
-/* ---------- logo reveal: planes converge, the light drops in and blooms ---------- */
-(function reveal() {
-  const L = $('#mL'), R = $('#mR'), light = $('#mLight');
-  if (reduced) return;
-  const outC = x => 1 - Math.pow(1 - x, 3);
-  const seg = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
-  const DUR = 2600;
-  let start;
-  function frame(now) {
-    if (start === undefined) start = now;
-    const t = (now - start) / 1000;
-    const conv = outC(seg(t, 0.15, 1.05));
-    L.setAttribute('transform', `translate(${-42 * (1 - conv)},0)`);
-    R.setAttribute('transform', `translate(${42 * (1 - conv)},0)`);
-    L.style.opacity = R.style.opacity = 0.25 + 0.75 * conv;
-    const drop = outC(seg(t, 0.95, 1.55));
-    const bloom = outC(seg(t, 1.5, 2.1));
-    light.setAttribute('cy', -60 + 46 * drop);
-    light.setAttribute('r', 6.5 * (0.35 + 0.35 * drop + 0.3 * bloom));
-    light.style.opacity = drop === 0 ? 0 : (0.6 + 0.4 * bloom);
-    if (t * 1000 < DUR) requestAnimationFrame(frame);
-    else finalize();
-  }
-  function finalize() {
-    L.setAttribute('transform', 'translate(0,0)');
-    R.setAttribute('transform', 'translate(0,0)');
-    L.style.opacity = R.style.opacity = 1;
-    light.setAttribute('cy', -14); light.setAttribute('r', 6.5); light.style.opacity = 1;
-    document.getElementById('heroMark').classList.add('settled');
-  }
-  requestAnimationFrame(frame);
-  setTimeout(finalize, DUR + 400); /* guarantees the resolved mark even in throttled tabs */
-})();
+/* ---------- the portrait arrives: one quiet entrance ---------- */
+addEventListener('load', () => {
+  requestAnimationFrame(() => $$('.mark-photo').forEach(el => el.classList.add('in')));
+});
+setTimeout(() => $$('.mark-photo').forEach(el => el.classList.add('in')), 900);
 
 /* ---------- the mark answers the hand: quiet pointer parallax ---------- */
 (function parallax() {
   if (reduced || matchMedia('(pointer: coarse)').matches) return;
-  const svg = $('#heroMark');
+  const svg = $('.hero-mark-wrap');
   const zone = $('.page-hero');
   let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
   zone.addEventListener('pointermove', e => {
