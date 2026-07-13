@@ -166,13 +166,15 @@ h1 .stop { color: var(--brass); } /* the light at the end of the sentence */
 .hero-art .flat-mark { display: none; }
 [data-art="mark"] .hero-art img { display: none !important; }
 [data-art="mark"] .hero-art .flat-mark {
-  display: block; width: min(52%, 19rem); height: auto; margin: 0 auto;
+  display: block; width: min(56%, 21rem); height: auto;
+  margin: 0 auto 3.2rem; /* optical lift: center on the headline mass, not the box */
   color: var(--text);
   opacity: 0; transform: scale(1.015);
   transition: opacity 1400ms var(--ease), transform 1900ms var(--ease);
 }
 [data-art="mark"] .hero-art .flat-mark.in { opacity: 1; transform: none; }
-[data-art="mark"] .hero-art { margin-bottom: 0.5rem; perspective: none; }
+[data-art="mark"] .hero-grid { align-items: center; }
+[data-art="mark"] .hero-art { margin-bottom: 0; perspective: none; align-self: center; }
 [data-art="type"] .hero-art { display: none; }
 [data-art="type"] .hero-copy { grid-column: 3 / 11; text-align: center; }
 [data-art="type"] h1 { font-size: clamp(3rem, 5.8vw, 5.8rem); }
