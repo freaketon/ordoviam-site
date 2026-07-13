@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-world="navy" data-mode="day">
+<html lang="en" data-world="navy" data-mode="day" data-art="photo">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ordoviam: five worlds, day and night</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="hero.css?v=16" />
+  <link rel="stylesheet" href="hero.css?v=17" />
 </head>
 <body>
 
@@ -41,6 +41,7 @@
           <div class="hero-art" aria-hidden="true">
             <img class="photo-day" src="../assets/renders/mark-light.jpg" alt="" width="928" height="1152" />
             <img class="photo-night" src="../assets/renders/mark-dark.jpg" alt="" width="928" height="1152" />
+            <svg class="flat-mark" viewBox="0 0 160 180"><g transform="translate(80,90)"><g fill="currentColor"><path d="M-6 -60 L-56 60 L-16 60 Z"/><path d="M6 -60 L56 60 L16 60 Z"/></g><circle cx="0" cy="-14" r="6.5" fill="var(--brass)"/></g></svg>
           </div>
         </div>
       </div>
@@ -91,10 +92,14 @@
   <button class="wdot" data-world-pick="navy"     data-name="Navy &amp; Brass"     style="background:#24407c"></button>
   <button class="wdot" data-world-pick="oxblood"  data-name="Oxblood &amp; Brass"  style="background:#6d1f2c"></button>
   <button class="wdot" data-world-pick="copper"   data-name="Copper &amp; Sienna"  style="background:#96491f"></button>
+  <span class="tag">ART</span>
+  <button class="adot" data-art-pick="photo">Photo</button>
+  <button class="adot" data-art-pick="mark">Mark</button>
+  <button class="adot" data-art-pick="type">Type</button>
   <button class="modeflip" id="modeflip">Night</button>
   <a class="modeflip" href="../river/" style="text-decoration:none;">River</a>
 </div>
 
-<script type="module" src="app.js?v=16"></script>
+<script type="module" src="app.js?v=17"></script>
 </body>
 </html>

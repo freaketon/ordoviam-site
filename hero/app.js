@@ -42,10 +42,19 @@ addEventListener('keydown', e => {
 setWorld(localStorage.getItem('ordoviam-world') || 'navy');
 setMode(localStorage.getItem('ordoviam-mode') || 'day');
 
+/* art treatment (review): photo | mark | type */
+function setArt(a) {
+  document.documentElement.dataset.art = a;
+  localStorage.setItem('ordoviam-art', a);
+  $$('.adot').forEach(b => b.classList.toggle('active', b.dataset.artPick === a));
+}
+$$('.adot').forEach(b => b.addEventListener('click', () => setArt(b.dataset.artPick)));
+setArt(localStorage.getItem('ordoviam-art') || 'photo');
+
 /* ---------- the artifact arrives once ---------- */
 addEventListener('load', () => requestAnimationFrame(() =>
-  $$('.hero-art img').forEach(el => el.classList.add('in'))));
-setTimeout(() => $$('.hero-art img').forEach(el => el.classList.add('in')), 900);
+  $$('.hero-art img, .hero-art .flat-mark').forEach(el => el.classList.add('in'))));
+setTimeout(() => $$('.hero-art img, .hero-art .flat-mark').forEach(el => el.classList.add('in')), 900);
 
 /* ---------- the artifact answers the hand: quiet tilt, centering preserved ---------- */
 (function parallax() {
