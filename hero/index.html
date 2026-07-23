@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" data-world="navy" data-mode="day" data-art="photo">
+<html lang="en" data-world="navy" data-mode="day" data-art="photo" data-cta="buttons">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ordoviam: five worlds, day and night</title>
   <meta name="robots" content="noindex" />
   <link rel="icon" href="../assets/logo/ordoviam-appicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="hero.css?v=20" />
+  <link rel="stylesheet" href="hero.css?v=21" />
 </head>
 <body>
 
@@ -30,12 +30,18 @@
             <h1>The clear path between borrowers and banks<span class="stop">.</span></h1>
             <p class="sub">Ordoviam matches businesses with lenders whose mandates actually fit,
               and documents every step of the search. Start on your side of the deal.</p>
-            <div class="fork">
+            <div class="fork cta-buttons">
               <button class="pill brand" data-go-chat data-intent="capital">I need capital</button>
               <button class="pill" data-go-chat data-intent="lender">I'm a lender</button>
             </div>
-            <p class="hint">Businesses raising $5M to $50M. Banks and private credit desks.
+            <form class="hero-prompt cta-chat" id="heroPrompt">
+              <label class="sr-only" for="heroPromptInput">Tell Billie what you need</label>
+              <input id="heroPromptInput" type="text" placeholder="Tell Billie what you need..." autocomplete="off" />
+              <button type="submit" aria-label="Start a conversation with Billie">Ask Billie <span aria-hidden="true">&#8594;</span></button>
+            </form>
+            <p class="hint cta-buttons">Businesses raising $5M to $50M. Banks and private credit desks.
               Unsure? <button class="draw-link" data-go-chat>Ask Billie</button></p>
+            <p class="hint cta-chat">Try: “We need $15M to finance an acquisition.”</p>
           </div>
 
           <div class="hero-art" aria-hidden="true">
@@ -96,10 +102,13 @@
   <button class="adot" data-art-pick="photo">Photo</button>
   <button class="adot" data-art-pick="mark">Mark</button>
   <button class="adot" data-art-pick="type">Type</button>
+  <span class="tag">CTA</span>
+  <button class="cdot" data-cta-pick="buttons">Buttons</button>
+  <button class="cdot" data-cta-pick="chat">Chat</button>
   <button class="modeflip" id="modeflip">Night</button>
   <a class="modeflip" href="../river/" style="text-decoration:none;">River</a>
 </div>
 
-<script type="module" src="app.js?v=17"></script>
+<script type="module" src="app.js?v=18"></script>
 </body>
 </html>

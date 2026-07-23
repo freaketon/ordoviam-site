@@ -51,6 +51,15 @@ function setArt(a) {
 $$('.adot').forEach(b => b.addEventListener('click', () => setArt(b.dataset.artPick)));
 setArt(localStorage.getItem('ordoviam-art') || 'photo');
 
+/* CTA treatment (review): directional buttons | conversational prompt */
+function setCta(c) {
+  document.documentElement.dataset.cta = c;
+  localStorage.setItem('ordoviam-cta', c);
+  $$('[data-cta-pick]').forEach(b => b.classList.toggle('active', b.dataset.ctaPick === c));
+}
+$$('[data-cta-pick]').forEach(b => b.addEventListener('click', () => setCta(b.dataset.ctaPick)));
+setCta(localStorage.getItem('ordoviam-cta') || 'buttons');
+
 /* ---------- the artifact arrives once ---------- */
 addEventListener('load', () => requestAnimationFrame(() =>
   $$('.hero-art img, .hero-art .flat-mark').forEach(el => el.classList.add('in'))));
@@ -80,6 +89,7 @@ setTimeout(() => $$('.hero-art img, .hero-art .flat-mark').forEach(el => el.clas
 
 /* ---------- The Study: an interview entering the record ---------- */
 let studyOpen = false;
+let pendingPrompt = '';
 
 const OPENERS = {
   capital: "Good to meet you. Tell me about the company: what it does, roughly what revenue looks like, and what the capital is for.",
@@ -129,15 +139,38 @@ function setChips(items) {
 }
 
 function enterStudy() {
-  if (studyOpen) { if (intent) branch(intent); return; }
+  if (studyOpen) {
+    if (intent) branch(intent);
+    else if (pendingPrompt) carryPromptIntoStudy();
+    return;
+  }
   studyOpen = true;
   if (intent) { branch(intent); return; }
+  if (pendingPrompt) { carryPromptIntoStudy(); return; }
   billieSays(OPENERS.none, true);
   setChips([
     ['We need financing', () => branch('capital')],
     ['We are a lender', () => branch('lender')]
   ]);
 }
+
+function carryPromptIntoStudy() {
+  const text = pendingPrompt;
+  pendingPrompt = '';
+  setChips([]);
+  addEntry(text, 'me');
+  billieSays("I can help with that. First, tell me which side of the transaction you're on and what a successful outcome looks like.", true);
+}
+
+$('#heroPrompt').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = $('#heroPromptInput');
+  pendingPrompt = input.value.trim();
+  if (!pendingPrompt) { input.focus(); return; }
+  input.value = '';
+  intent = null;
+  journey.go('chat');
+});
 
 function branch(which) {
   intent = null;
