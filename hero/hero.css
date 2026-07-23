@@ -25,15 +25,15 @@
   --ease: cubic-bezier(0.22, 0.61, 0.21, 1);
 }
 
-[data-world="charcoal"][data-mode="day"]   { --ground:#ffffff; --text:#26282b; --muted:#6b6e73; --brand:#26282b; --on-brand:#ffffff; --grain:0.035; }
+[data-world="charcoal"][data-mode="day"]   { --ground:#f4f0e6; --text:#26282b; --muted:#6b6e73; --brand:#26282b; --on-brand:#ffffff; --grain:0.035; }
 [data-world="charcoal"][data-mode="night"] { --ground:#131313; --text:#f2efe9; --muted:#a7a49d; --brand:#e9e4da; --on-brand:#131313; --grain:0.07; }
-[data-world="slate"][data-mode="day"]      { --ground:#fafaf8; --text:#38414c; --muted:#6d7681; --brand:#46566a; --on-brand:#ffffff; --grain:0.04; }
+[data-world="slate"][data-mode="day"]      { --ground:#f4f0e6; --text:#38414c; --muted:#6d7681; --brand:#46566a; --on-brand:#ffffff; --grain:0.04; }
 [data-world="slate"][data-mode="night"]    { --ground:#151b22; --text:#f2f4f6; --muted:#93a0ae; --brand:#8fa3bb; --on-brand:#10151c; --grain:0.065; }
-[data-world="navy"][data-mode="day"]       { --ground:#f8f7f3; --text:#1c2b45; --muted:#5f6a7e; --brand:#24407c; --on-brand:#ffffff; --grain:0.045; }
+[data-world="navy"][data-mode="day"]       { --ground:#f4f0e6; --text:#1c2b45; --muted:#5f6a7e; --brand:#24407c; --on-brand:#ffffff; --grain:0.045; }
 [data-world="navy"][data-mode="night"]     { --ground:#0f1b30; --text:#f4f3ee; --muted:#93a0b4; --brand:#33549e; --on-brand:#ffffff; --grain:0.065; }
-[data-world="oxblood"][data-mode="day"]    { --ground:#faf7f5; --text:#3d2126; --muted:#7d5a62; --brand:#6d1f2c; --on-brand:#ffffff; --grain:0.045; }
+[data-world="oxblood"][data-mode="day"]    { --ground:#f4f0e6; --text:#3d2126; --muted:#7d5a62; --brand:#6d1f2c; --on-brand:#ffffff; --grain:0.045; }
 [data-world="oxblood"][data-mode="night"]  { --ground:#160c0f; --text:#f6eef0; --muted:#b39aa1; --brand:#a53d4e; --on-brand:#ffffff; --grain:0.07; }
-[data-world="copper"][data-mode="day"]     { --ground:#faf6f1; --text:#3f2f26; --muted:#79695c; --brand:#96491f; --on-brand:#ffffff; --grain:0.045; }
+[data-world="copper"][data-mode="day"]     { --ground:#f4f0e6; --text:#3f2f26; --muted:#79695c; --brand:#96491f; --on-brand:#ffffff; --grain:0.045; }
 [data-world="copper"][data-mode="night"]   { --ground:#171009; --text:#f6efe8; --muted:#ab9a8a; --brand:#c97a4a; --on-brand:#1a0e05; --grain:0.07; }
 
 /* derived, obeying the light law: warm shadows, tinted hairlines */
